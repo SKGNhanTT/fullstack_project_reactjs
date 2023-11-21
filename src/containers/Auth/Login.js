@@ -4,16 +4,31 @@ import { push } from 'connected-react-router';
 
 import * as actions from '../../store/actions';
 import './Login.scss';
-import { FormattedMessage } from 'react-intl';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBrands } from '@fortawesome/free-solid-svg-icons';
 
 class Login extends Component {
     constructor(props) {
         super(props);
-        this.btnLogin = React.createRef();
+        this.state = {
+            username: '',
+            password: '',
+        };
     }
 
+    handleOnchangeUsername = (e) => {
+        this.setState({
+            username: e.target.value,
+        });
+    };
+    handleOnchangePassword = (e) => {
+        this.setState({
+            password: e.target.value,
+        });
+    };
+
+    handleLogin = () => {
+        console.log(this.state.username);
+        console.log(this.state.password);
+    };
     render() {
         return (
             <div>
@@ -27,6 +42,11 @@ class Login extends Component {
                                     type="text"
                                     className="form-control"
                                     placeholder="Enter your name"
+                                    value={this.state.username}
+                                    onChange={(e) =>
+                                        this.handleOnchangeUsername(e)
+                                    }
+                                    required
                                 />
                             </div>
                             <div className="col-12 form-group login-input">
@@ -35,10 +55,22 @@ class Login extends Component {
                                     type="password"
                                     className="form-control"
                                     placeholder="Enter your password"
+                                    value={this.state.password}
+                                    onChange={(e) =>
+                                        this.handleOnchangePassword(e)
+                                    }
+                                    required
                                 />
                             </div>
                             <div className="col-12">
-                                <button className="btn-login">Log in</button>
+                                <button
+                                    className="btn-login"
+                                    onClick={() => {
+                                        this.handleLogin();
+                                    }}
+                                >
+                                    Log in
+                                </button>
                             </div>
                             <div className="col-12">
                                 <span className="forgot-password">
