@@ -8,9 +8,7 @@ const handleLoginApi = (email, password) => {
 };
 
 const getAllUser = (userId) => {
-    return axios.get(`/api/get-all-user?id=${userId}`, {
-        id: userId,
-    });
+    return axios.get(`/api/get-all-user?id=${userId}`);
 };
 
 const addNewUser = (data) => {
@@ -31,4 +29,15 @@ const editUser = (user) => {
     return axios.put('api/edit-user', user);
 };
 
-export { handleLoginApi, getAllUser, addNewUser, deleteUser, editUser };
+const getAllCodeService = (inputType) => {
+    return axios.get(`/api/allcode?type=${inputType}`);
+};
+
+export {
+    handleLoginApi,
+    getAllUser,
+    addNewUser,
+    deleteUser,
+    editUser,
+    getAllCodeService,
+};

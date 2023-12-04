@@ -13,9 +13,9 @@ class About extends React.Component {
                             height="400px"
                             src="https://www.youtube.com/embed/i0ZabxXmH4Y"
                             title="Coronavirus disease (COVID-19)"
-                            frameborder="0"
+                            frameBorder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen
+                            allowFullScreen
                         ></iframe>
                     </div>
                     <div className="section-right">
