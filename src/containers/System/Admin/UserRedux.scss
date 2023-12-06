@@ -1,5 +1,13 @@
+.label-img {
+    margin-top: 3px !important;
+}
+.btn-submit {
+    display: flex !important;
+    justify-content: flex-end !important;
+}
 .preview-img-container {
     .label-upload {
+        margin-top: -5px;
         padding: 5px;
         border-radius: 3px;
         background: #ddd;

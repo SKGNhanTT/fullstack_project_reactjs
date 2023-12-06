@@ -48,6 +48,7 @@
         "position": "Chức danh",
         "roleid": "Vài trò",
         "image": "Hình ảnh",
-        "submit": "Lưu"
+        "submit": "Tạo mới",
+        "edit": "Lưu thay đổi"
     }
 }
