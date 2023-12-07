@@ -5,6 +5,7 @@ import {
     getAllUser,
     deleteUser,
     editUser,
+    getDoctorHomeService,
 } from '../../services/userService';
 import { toast } from 'react-toastify';
 
@@ -95,6 +96,7 @@ export const fetchRoleFaild = () => ({
 // ===================================================
 
 export const createNewUser = (data) => {
+    console.log('check data from create function', data);
     return async (dispatch, getState) => {
         try {
             let res = await addNewUser(data);
@@ -169,11 +171,11 @@ export const deletaAUser = (userId) => {
     };
 };
 export const deleteUserSuccess = () => ({
-    type: actionTypes.DELETE_ALL_USER_SUCCESS,
+    type: actionTypes.DELETE_USER_SUCCESS,
 });
 
 export const deleteUserFaild = () => ({
-    type: actionTypes.DELETE_ALL_USER_FAILD,
+    type: actionTypes.DELETE_USER_FAILD,
 });
 
 // ===================================================
@@ -203,3 +205,27 @@ export const editUserSuccess = () => ({
 export const editUserFaild = () => ({
     type: actionTypes.EDIT_USER_FAILD,
 });
+
+// ===================================================
+export const fetchTopDoctor = () => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await getDoctorHomeService('3');
+            if (res && res.errCode == 0) {
+                dispatch({
+                    type: actionTypes.FETCH_TOP_DOCTOR_SUCCESS,
+                    dataDoctor: res.data,
+                });
+            } else {
+                dispatch({
+                    type: actionTypes.FETCH_TOP_DOCTOR_FAILD,
+                });
+            }
+        } catch (error) {
+            console.log(error);
+            dispatch({
+                type: actionTypes.FETCH_TOP_DOCTOR_FAILD,
+            });
+        }
+    };
+};

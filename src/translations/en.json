@@ -12,7 +12,7 @@
         "welcome": "Welcome, "
     },
     "banner": {
-        "title1": "Medical Background",
+        "title1": "Medical PlatForm",
         "title2": "Comerehensive Health Care",
         "child1": "Speciallize Examination",
         "child2": "Remote Examination",
@@ -50,5 +50,9 @@
         "image": "Image",
         "submit": "Create user",
         "edit": "Save change"
+    },
+    "homepage": {
+        "outstanding-doctor": "Last week's featured doctor",
+        "more-info": "More info"
     }
 }
