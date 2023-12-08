@@ -36,7 +36,8 @@
 
 .section-share {
     &.section-specialty {
-        background: #edfafb;
+        // background-image: url('../../assets/images/background/background_child.png');
+        margin-top: 50px;
     }
     &.section-oustanding-doctor {
         // background: #edfafb;
@@ -46,6 +47,12 @@
         height: 500px !important;
         border-top: 1px solid #f5f5f5;
         border-bottom: 1px solid #f5f5f5;
+    }
+    &.section-medical-facility {
+        // background-image: url('../../assets/images/background/background_child.png');
+    }
+    &.section-HandBook {
+        background-image: url('../../assets/images/background/140311-background5.png');
     }
 
     .section-body {
