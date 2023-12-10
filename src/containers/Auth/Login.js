@@ -55,6 +55,11 @@ class Login extends Component {
             }
         }
     };
+    handleKeyDown = (e) => {
+        if (e.key === 'Enter' || e.keyCode === 13) {
+            this.handleLogin();
+        }
+    };
     render() {
         return (
             <div>
@@ -86,6 +91,7 @@ class Login extends Component {
                                         this.handleOnchangePassword(e)
                                     }
                                     required
+                                    onKeyDown={(e) => this.handleKeyDown(e)}
                                 />
                             </div>
                             <div className="col-12" style={{ color: 'red' }}>

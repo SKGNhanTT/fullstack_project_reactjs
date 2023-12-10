@@ -18,7 +18,7 @@ class ManageDoctor extends Component {
         this.state = {
             contentMarkdown: '',
             contentHTML: '',
-            selectedDoctor: '',
+            selectedDoctor: {},
             description: '',
             listDoctor: [],
             hasOldData: false,
@@ -81,7 +81,7 @@ class ManageDoctor extends Component {
         this.setState({
             contentMarkdown: '',
             contentHTML: '',
-            selectedDoctor: '',
+            selectedDoctor: {},
             description: '',
             hasOldData: false,
         });
