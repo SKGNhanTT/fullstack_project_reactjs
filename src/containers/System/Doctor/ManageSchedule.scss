@@ -16,6 +16,10 @@
             outline: none;
             border: 1px solid #ccc;
             min-width: 160px;
+            &.active {
+                background-color: rgb(224, 157, 33);
+                color: #fff;
+            }
         }
 
         button {
