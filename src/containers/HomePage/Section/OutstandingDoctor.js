@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../../store/actions';
 import { LANGUAGES } from '../../../utils';
 import { FormattedMessage } from 'react-intl';
+import { withRouter } from 'react-router';
 
 import Slider from 'react-slick';
 
@@ -24,6 +25,12 @@ class OutstandingDoctor extends Component {
             });
         }
     }
+
+    handleDetailDoctor = (doctor) => {
+        if (this.props.history) {
+            this.props.history.push(`/detail-doctor/${doctor.id}`);
+        }
+    };
 
     render() {
         let allDoctor = this.state.arrDoctor;
@@ -58,7 +65,14 @@ class OutstandingDoctor extends Component {
                                         let nameEN = `${item.positionData.valueEn}, ${item.firstName} ${item.lastName}`;
                                         return (
                                             <div className="doctor-container">
-                                                <div className="section-customize">
+                                                <div
+                                                    className="section-customize"
+                                                    onClick={() =>
+                                                        this.handleDetailDoctor(
+                                                            item
+                                                        )
+                                                    }
+                                                >
                                                     <div className="outer-bg">
                                                         <div
                                                             className="bg-img section-oustanding-doctor"
@@ -67,7 +81,7 @@ class OutstandingDoctor extends Component {
                                                             }}
                                                         ></div>
                                                     </div>
-                                                    <div className="posiion text-center mt-2">
+                                                    <div className="position text-center mt-2">
                                                         <h6>
                                                             {language ===
                                                             LANGUAGES.VI
@@ -105,4 +119,6 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(OutstandingDoctor);
+export default withRouter(
+    connect(mapStateToProps, mapDispatchToProps)(OutstandingDoctor)
+);

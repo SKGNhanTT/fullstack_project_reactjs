@@ -13,7 +13,7 @@
 }
 
 .slick-next {
-    right: -3px !important;
+    right: -10px !important;
     z-index: 10000 !important;
     width: 44px !important;
     height: 48px !important;
@@ -56,11 +56,18 @@
     }
 
     .section-body {
-        // .doctor-container {
-        //     border: 1px solid red;
-        //     padding: 5px 1px;
-        // }
+        .doctor-container {
+            padding: 5px 1px;
+            display: flex;
+            gap: 10px !important;
+        }
         .section-customize {
+            border: 1px solid #cac6c6;
+            background-color: #fff;
+            border-radius: 10px;
+            padding-bottom: 10px;
+            cursor: pointer;
+
             .outer-bg {
                 padding-top: 10px;
             }
@@ -109,7 +116,7 @@
             justify-content: space-between;
             padding: 20px 0;
             align-items: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             margin-top: 30px;
 
             .title-section {

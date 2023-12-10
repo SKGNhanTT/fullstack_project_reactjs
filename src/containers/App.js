@@ -5,20 +5,18 @@ import { ConnectedRouter as Router } from 'connected-react-router';
 import { history } from '../redux';
 import { ToastContainer } from 'react-toastify';
 import CustomScrollbars from '../components/CustomScrollbars';
+import DetailDoctor from './Patient/Doctor/DetailDoctor';
 
 import {
     userIsAuthenticated,
     userIsNotAuthenticated,
 } from '../hoc/authentication';
-
 import { path } from '../utils';
-
 import Home from '../routes/Home';
 import Login from './Auth/Login';
 import System from '../routes/System';
-
-import { CustomToastCloseButton } from '../components/CustomToast';
 import HomePage from '../containers/HomePage/HomePage';
+import Doctor from '../routes/Doctor';
 
 class App extends Component {
     handlePersistorState = () => {
@@ -65,8 +63,16 @@ class App extends Component {
                                         component={userIsAuthenticated(System)}
                                     />
                                     <Route
+                                        path={path.DOCTOR}
+                                        component={userIsAuthenticated(Doctor)}
+                                    />
+                                    <Route
                                         path={path.HOMEPAGE}
                                         component={HomePage}
+                                    />
+                                    <Route
+                                        path={path.DETAIL_DOCTOR}
+                                        component={DetailDoctor}
                                     />
                                 </Switch>
                             </CustomScrollbars>
