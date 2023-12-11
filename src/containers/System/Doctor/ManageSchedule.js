@@ -17,7 +17,7 @@ class ManageSchedule extends Component {
         this.state = {
             listDoctor: [],
             selectedDoctor: {},
-            currentDate: new Date(),
+            currentDate: '',
             rangeTime: [],
         };
     }
@@ -118,17 +118,35 @@ class ManageSchedule extends Component {
                 });
             } else {
                 toast.error('Please choose time!');
+                return;
             }
         }
+        toast.success('Create schedule success!');
         let res = await saveBulkDoctor({
             arrSchedule: result,
             doctorId: selectedDoctor.value,
             formatedDate: formatedDate,
         });
+        if (rangeTime && rangeTime.length > 0) {
+            rangeTime = rangeTime.map((item) => {
+                item.isSlected = false;
+                return item;
+            });
+        }
+        console.log(res);
+        if (res && res.errCode === 0) {
+            this.setState({
+                selectedDoctor: {},
+                currentDate: '',
+                rangeTime: rangeTime,
+            });
+        }
     };
     render() {
         let { rangeTime } = this.state;
         let { language } = this.props;
+        let today = new Date();
+        today.setDate(today.getDate() - 1);
         return (
             <React.Fragment>
                 <div className="manage-schedule-container">
@@ -155,7 +173,7 @@ class ManageSchedule extends Component {
                                     onChange={this.handleChangeDatePicker}
                                     className="form-control"
                                     value={this.state.currentDate}
-                                    minDate={new Date()}
+                                    minDate={today}
                                 />
                             </div>
                             <div className="col-12 pick-hour-container">
