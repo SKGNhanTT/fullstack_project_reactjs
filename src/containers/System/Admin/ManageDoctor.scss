@@ -37,15 +37,14 @@
         }
     }
     .more-info {
-        display: flex;
-        gap: 15px;
         margin-bottom: 5px;
+        margin-left: 0px;
         .content-left {
             padding-left: 0px;
-            max-height: 33.5px;
         }
         .content-right {
             padding-left: 0px;
+
             textarea {
                 height: 38px;
             }
