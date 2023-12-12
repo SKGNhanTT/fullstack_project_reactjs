@@ -71,5 +71,14 @@
             "choose": "Choose",
             "book-free": "and book (free)"
         }
+    },
+    "admin": {
+        "manage-doctor": {
+            "title": "DOCTOR PLAN MANAGEMENT",
+            "select-doctor": "Choose doctor:",
+            "infor": "Introduction:",
+            "btn-save": "Save information",
+            "btn-add": "Create information"
+        }
     }
 }

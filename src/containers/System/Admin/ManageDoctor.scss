@@ -16,7 +16,7 @@
         border: none;
         padding: 5px;
         background-color: orange;
-        color: black;
+        color: #fff;
         cursor: pointer;
         &:hover {
             opacity: 0.9;
@@ -39,12 +39,19 @@
     .more-info {
         display: flex;
         gap: 15px;
+        margin-bottom: 5px;
         .content-left {
-            width: 40%;
+            padding-left: 0px;
+            max-height: 33.5px;
         }
         .content-right {
-            width: 60%;
-            padding-bottom: 15px;
+            padding-left: 0px;
+            textarea {
+                height: 38px;
+            }
         }
+    }
+    .doctor-info-individual {
+        margin-bottom: 10px;
     }
 }
