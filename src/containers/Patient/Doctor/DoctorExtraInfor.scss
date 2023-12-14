@@ -22,9 +22,12 @@
             margin-bottom: 10px;
         }
         .short-infor {
-            span {
+            .detail {
                 cursor: pointer;
                 color: #0a73b4;
+            }
+            .currency {
+                margin: 0 5px;
             }
         }
         .detail-infor {
