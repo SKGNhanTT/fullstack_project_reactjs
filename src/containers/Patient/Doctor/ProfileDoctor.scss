@@ -1,0 +1,31 @@
+.intro-contor {
+    display: flex;
+    // margin: 0 100px;
+
+    .content-left {
+        background: center center no-repeat;
+        width: 100px;
+        height: 100px;
+        overflow: hidden;
+        border-radius: 50%;
+        margin: 10px 20px;
+        background-size: cover;
+    }
+
+    .content-right {
+        padding-left: 10px;
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+
+        .up {
+            padding-top: 15px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .down {
+            // padding-top: 10px;
+        }
+    }
+}
