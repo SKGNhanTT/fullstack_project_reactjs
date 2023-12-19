@@ -2,9 +2,12 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import './ProfileDoctor.scss';
 import { LANGUAGES } from '../../../utils';
+import localization from 'moment/locale/vi';
 import { FormattedMessage } from 'react-intl';
 import { getProfileDoctorById } from '../../../services/userService';
 import NumberFormat from 'react-number-format';
+import _ from 'lodash';
+import moment from 'moment';
 
 class ProfileDoctor extends Component {
     constructor(props) {
@@ -38,10 +41,44 @@ class ProfileDoctor extends Component {
             // this.getInforDoctor(this.props.doctorId);
         }
     }
+    renderTimeBooking = (dataTime) => {
+        let { language } = this.props;
+        if (dataTime && !_.isEmpty(dataTime)) {
+            let time =
+                language === LANGUAGES.VI
+                    ? dataTime.timeTypeData.valueVi
+                    : dataTime.timeTypeData.valueEn;
+            let date;
+            if (language === LANGUAGES.VI) {
+                date = this.capitalizeFirstLetter(
+                    moment
+                        .unix(+dataTime.date / 1000)
+                        .format('dddd - DD/MM/YYYY')
+                );
+            } else {
+                date = moment
+                    .unix(+dataTime.date / 1000)
+                    .locale('en')
+                    .format('ddd - MM/DD/YYYY');
+            }
 
+            return (
+                <>
+                    <div>
+                        {time} - {date}
+                    </div>
+                    <div>Miễn phí đặt lịch</div>
+                </>
+            );
+        }
+        return <></>;
+    };
+    capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
     render() {
         let { dataProfile } = this.state;
-        let { language } = this.props;
+        let { language, isShowDescription, dataTime } = this.props;
 
         let nameVi, nameEN;
         if (dataProfile && dataProfile.positionData) {
@@ -67,12 +104,21 @@ class ProfileDoctor extends Component {
                             {language === LANGUAGES.VI ? nameVi : nameEN}
                         </div>
                         <div className="down">
-                            {dataProfile.Markdown &&
-                                dataProfile.Markdown.description && (
-                                    <span>
-                                        {dataProfile.Markdown.description}
-                                    </span>
-                                )}
+                            {isShowDescription ? (
+                                <>
+                                    {dataProfile.Markdown &&
+                                        dataProfile.Markdown.description && (
+                                            <span>
+                                                {
+                                                    dataProfile.Markdown
+                                                        .description
+                                                }
+                                            </span>
+                                        )}
+                                </>
+                            ) : (
+                                <>{this.renderTimeBooking(dataTime)}</>
+                            )}
                         </div>
                     </div>
                 </div>

@@ -18,26 +18,13 @@ class BookingModal extends Component {
         };
     }
 
-    async componentDidMount() {
-        this.setState({
-            dataTimeState: this.props.dataTime,
-        });
-    }
+    async componentDidMount() {}
 
-    async componentDidUpdate(prevProps, prevState, snapshot) {
-        // if (this.props.dataTime !== prevProps.dataTime) {
-        //     this.setState({
-        //         dataTimeState: this.props.dataTime,
-        //     });
-        // }
-    }
+    async componentDidUpdate(prevProps, prevState, snapshot) {}
 
     render() {
         let { dataTime } = this.props;
         let { language } = this.props;
-        let { dataTimeState } = this.state;
-        let localTimeEn = moment(dataTimeState.date).format('YYYY-MM-DD');
-        let localTimeVi = moment(dataTimeState.date).format('DD-MM-YYYY');
 
         let doctorId = '';
         let timeVi, timeEn;
@@ -57,26 +44,16 @@ class BookingModal extends Component {
             >
                 <Modal.Header>
                     <div>
-                        <Modal.Title>
-                            Thông Tin Đặt Lịch Khám Bệnh Ngày{' '}
-                            <span>
-                                {`${
-                                    language === LANGUAGES.VI
-                                        ? localTimeVi
-                                        : localTimeEn
-                                }`}
-                            </span>{' '}
-                            <span>
-                                {`(${
-                                    language === LANGUAGES.VI ? timeVi : timeEn
-                                })`}
-                            </span>
-                        </Modal.Title>
+                        <Modal.Title>Thông Tin Đặt Lịch Khám Bệnh</Modal.Title>
                     </div>
                 </Modal.Header>
                 <Modal.Body>
                     <div>
-                        <ProfileDoctor doctorId={doctorId} />
+                        <ProfileDoctor
+                            doctorId={doctorId}
+                            isShowDescription={false}
+                            dataTime={dataTime}
+                        />
                     </div>
                     <div className="modal-user-body">
                         <div className="input-container">
