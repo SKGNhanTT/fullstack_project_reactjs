@@ -77,6 +77,20 @@
             "detail": "See detail",
             "payment": " Patients can pay costs in the form of: ",
             "hide-price": "Hide price list"
+        },
+        "booking-modal": {
+            "title": "Medical Examination Scheduling Information",
+            "fullName": "Full Name",
+            "phoneNumber": "Phone Number",
+            "email": "Email",
+            "address": "Address",
+            "reason": "Reason for examination",
+            "gender": "Sex",
+            "birthday": "Date of birth",
+            "btn": "Appointment",
+            "cancel-btn": "Close",
+            "priceBooking": "Free booking",
+            "price": "Examination price: "
         }
     },
     "admin": {
