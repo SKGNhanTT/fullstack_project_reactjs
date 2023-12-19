@@ -4,15 +4,15 @@ import './BookingModal.scss';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import ProfileDoctor from '../ProfileDoctor';
-import _ from 'lodash';
 import { LANGUAGES } from '../../../../utils';
-import moment from 'moment';
 import DatePicker from '../../../../components/Input/DatePicker';
 import * as actions from '../../../../store/actions';
 import Select from 'react-select';
 import { postPatientBookingAppointment } from '../../../../services/userService';
 import { toast } from 'react-toastify';
 import { FormattedMessage } from 'react-intl';
+import _ from 'lodash';
+import moment from 'moment';
 
 class BookingModal extends Component {
     constructor(props) {
@@ -91,6 +91,8 @@ class BookingModal extends Component {
 
     handleSaveChange = async () => {
         let date = new Date(this.state.birth).getTime();
+        let timeString = this.buildTimeBooking(this.props.dataTime);
+        let doctorName = this.buildDoctorName(this.props.dataTime);
         let res = await postPatientBookingAppointment({
             fullName: this.state.fullName,
             phoneNumber: this.state.phoneNumber,
@@ -101,6 +103,9 @@ class BookingModal extends Component {
             date: date,
             doctorId: this.state.doctorId,
             timeType: this.state.timeType,
+            language: this.props.language,
+            timeString: timeString,
+            doctorName: doctorName,
         });
 
         if (res && res.errCode === 0) {
@@ -119,6 +124,47 @@ class BookingModal extends Component {
         } else {
             toast.error('Create appointment failed!');
         }
+    };
+
+    buildTimeBooking = (dataTime) => {
+        let { language } = this.props;
+        if (dataTime && !_.isEmpty(dataTime)) {
+            let time =
+                language === LANGUAGES.VI
+                    ? dataTime.timeTypeData.valueVi
+                    : dataTime.timeTypeData.valueEn;
+            let date;
+            if (language === LANGUAGES.VI) {
+                date = this.capitalizeFirstLetter(
+                    moment
+                        .unix(+dataTime.date / 1000)
+                        .format('dddd - DD/MM/YYYY')
+                );
+            } else {
+                date = moment
+                    .unix(+dataTime.date / 1000)
+                    .locale('en')
+                    .format('ddd - MM/DD/YYYY');
+            }
+
+            return `${time} - ${date}`;
+        }
+        return <></>;
+    };
+    capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
+    buildDoctorName = (dataTime) => {
+        let { language } = this.props;
+        if (dataTime && !_.isEmpty(dataTime)) {
+            let name =
+                language === LANGUAGES.VI
+                    ? `${dataTime.doctorData.lastName} ${dataTime.doctorData.firstName}`
+                    : `${dataTime.doctorData.firstName} ${dataTime.doctorData.lastName}`;
+            return name;
+        }
+        return <></>;
     };
 
     render() {
