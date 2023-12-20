@@ -119,7 +119,6 @@ class BookingModal extends Component {
                 reason: '',
                 selectedGender: '',
                 birth: '',
-                doctorId: '',
             });
         } else {
             toast.error('Create appointment failed!');
