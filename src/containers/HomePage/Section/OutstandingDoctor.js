@@ -64,7 +64,10 @@ class OutstandingDoctor extends Component {
                                         let nameVi = `${item.positionData.valueVi}, ${item.lastName} ${item.firstName}`;
                                         let nameEN = `${item.positionData.valueEn}, ${item.firstName} ${item.lastName}`;
                                         return (
-                                            <div className="doctor-container">
+                                            <div
+                                                className="doctor-container"
+                                                key={item.id}
+                                            >
                                                 <div
                                                     className="section-customize"
                                                     onClick={() =>
