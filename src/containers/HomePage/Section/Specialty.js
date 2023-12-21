@@ -5,6 +5,7 @@ import Slider from 'react-slick';
 import './Specialty.scss';
 import { getAllSpecialty } from '../../../services/userService';
 import { FormattedMessage } from 'react-intl';
+import { withRouter } from 'react-router';
 
 class Specialty extends React.Component {
     constructor(props) {
@@ -23,6 +24,12 @@ class Specialty extends React.Component {
             });
         }
     }
+
+    handleDetailDoctor = (specialty) => {
+        if (this.props.history) {
+            this.props.history.push(`/detail-specialty/${specialty.id}`);
+        }
+    };
 
     render() {
         let { dataSpecialty } = this.state;
@@ -61,6 +68,11 @@ class Specialty extends React.Component {
                                                     backgroundImage: `url(${item.image})`,
                                                     borderRadius: '5px',
                                                 }}
+                                                onClick={() =>
+                                                    this.handleDetailDoctor(
+                                                        item
+                                                    )
+                                                }
                                             ></div>
                                             <h5 className="name-specialty">
                                                 {item.name}
@@ -87,4 +99,6 @@ const mapDispatchToProps = (dispatch) => {
     return {};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Specialty);
+export default withRouter(
+    connect(mapStateToProps, mapDispatchToProps)(Specialty)
+);

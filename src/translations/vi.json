@@ -107,7 +107,9 @@
             "province": "Tỉnh thành",
             "nameClinic": "Tên Phòng khám",
             "addressClinic": "Địa chỉ Phòng khám",
-            "note": "Ghi chú"
+            "note": "Ghi chú",
+            "specialty": "Chuyên khoa",
+            "select-clinic": "Phòng khám"
         }
     }
 }
