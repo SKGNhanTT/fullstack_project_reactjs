@@ -12,7 +12,16 @@ class DoctorExtraInfor extends Component {
         this.state = { isShowDetail: false, extraInfo: {} };
     }
 
-    async componentDidMount() {}
+    async componentDidMount() {
+        if (this.props.detailDoctor) {
+            let res = await getExtraInforDoctorById(this.props.detailDoctor);
+            if (res && res.errCode === 0) {
+                this.setState({
+                    extraInfo: res.data,
+                });
+            }
+        }
+    }
 
     async componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.props.detailDoctor !== prevProps.detailDoctor) {
@@ -109,6 +118,10 @@ class DoctorExtraInfor extends Component {
                                                             extraInfo
                                                                 .priceTypeData
                                                                 .valueVi
+                                                                ? extraInfo
+                                                                      .priceTypeData
+                                                                      .valueVi
+                                                                : ''
                                                         }
                                                         displayType={'text'}
                                                         thousandSeparator={true}
@@ -123,6 +136,10 @@ class DoctorExtraInfor extends Component {
                                                             extraInfo
                                                                 .priceTypeData
                                                                 .valueEn
+                                                                ? extraInfo
+                                                                      .priceTypeData
+                                                                      .valueEn
+                                                                : ''
                                                         }
                                                         displayType={'text'}
                                                         thousandSeparator={true}
