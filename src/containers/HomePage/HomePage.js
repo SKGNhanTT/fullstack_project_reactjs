@@ -18,15 +18,15 @@ class HomePage extends Component {
             dots: false,
             infinite: false,
             speed: 500,
-            slidesToShow: 4,
+            slidesToShow: 3,
             slidesToScroll: 1,
         };
         return (
             <div>
                 <HomeHeader isShowBanner />
-                <Specialty />
-                <OutstandingDoctor setting={settings} />
+                <Specialty setting={settings} />
                 <MedicalFacility setting={settings} />
+                <OutstandingDoctor setting={settings} />
                 <HandBook setting={settings} />
                 <About />
                 <HomeFooter />

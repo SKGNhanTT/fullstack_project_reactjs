@@ -25,7 +25,7 @@ class Specialty extends React.Component {
         }
     }
 
-    handleDetailDoctor = (specialty) => {
+    handleDetailSpecialty = (specialty) => {
         if (this.props.history) {
             this.props.history.push(`/detail-specialty/${specialty.id}`);
         }
@@ -33,13 +33,7 @@ class Specialty extends React.Component {
 
     render() {
         let { dataSpecialty } = this.state;
-        let settings = {
-            dots: false,
-            infinite: false,
-            speed: 500,
-            slidesToShow: 3,
-            slidesToScroll: 1,
-        };
+
         return (
             <div className="section-share section-specialty">
                 <div className="section-container">
@@ -53,7 +47,7 @@ class Specialty extends React.Component {
                     </div>
 
                     <div className="section-body">
-                        <Slider {...settings}>
+                        <Slider {...this.props.setting}>
                             {dataSpecialty &&
                                 dataSpecialty.length > 0 &&
                                 dataSpecialty.map((item) => {
@@ -69,7 +63,7 @@ class Specialty extends React.Component {
                                                     borderRadius: '5px',
                                                 }}
                                                 onClick={() =>
-                                                    this.handleDetailDoctor(
+                                                    this.handleDetailSpecialty(
                                                         item
                                                     )
                                                 }

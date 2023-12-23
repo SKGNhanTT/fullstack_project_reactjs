@@ -35,6 +35,13 @@ class OutstandingDoctor extends Component {
     render() {
         let allDoctor = this.state.arrDoctor;
         let { language } = this.props;
+        let settings = {
+            dots: false,
+            infinite: false,
+            speed: 500,
+            slidesToShow: 4,
+            slidesToScroll: 1,
+        };
         return (
             <div>
                 <div className="section-share section-oustanding-doctor">
@@ -50,7 +57,7 @@ class OutstandingDoctor extends Component {
                         </div>
 
                         <div className="section-body">
-                            <Slider {...this.props.setting}>
+                            <Slider {...settings}>
                                 {allDoctor &&
                                     allDoctor.length > 0 &&
                                     allDoctor.map((item) => {
