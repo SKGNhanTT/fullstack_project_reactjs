@@ -50,10 +50,21 @@ class DetailSpecialty extends Component {
                         });
                     }
                 }
+                let dataProvince = resProvince.data;
+                if (dataProvince && dataProvince.length > 0) {
+                    dataProvince.unshift({
+                        createdAt: null,
+                        keyMap: 'ALL',
+                        type: 'PROVINCE',
+                        valueEn: 'ALL',
+                        valueVi: 'Toàn quốc',
+                    });
+                }
+
                 this.setState({
                     dataDetailSpecialty: res.data,
                     arrDoctorId: arrDoctorId,
-                    listProvince: resProvince.data,
+                    listProvince: dataProvince ? dataProvince : [],
                 });
             }
         }
@@ -61,10 +72,35 @@ class DetailSpecialty extends Component {
 
     async componentDidUpdate(prevProps, prevState, snapshot) {}
 
-    handleOnchange = (e) => {
-        console.log(e.target.value);
-    };
+    handleOnchange = async (e) => {
+        if (
+            this.props.match &&
+            this.props.match.params &&
+            this.props.match.params.id
+        ) {
+            let id = this.props.match.params.id;
+            let location = e.target.value;
+            let res = await getDetailSpecialtyById({ id, location: location });
 
+            if (res && res.errCode === 0) {
+                let data = res.data;
+                let arrDoctorId = [];
+                if (data && !_.isEmpty(data)) {
+                    let arr = data.doctorSpecialty;
+                    if (arr && arr.length > 0) {
+                        arr.map((item) => {
+                            arrDoctorId.push(item.doctorId);
+                        });
+                    }
+                }
+
+                this.setState({
+                    dataDetailSpecialty: res.data,
+                    arrDoctorId: arrDoctorId,
+                });
+            }
+        }
+    };
     render() {
         let { arrDoctorId, dataDetailSpecialty, listProvince } = this.state;
         let { language } = this.props;
@@ -73,18 +109,22 @@ class DetailSpecialty extends Component {
             <div className="detail-specialty-container">
                 <HomeHeader />
                 <div className="detail-specialty-body">
-                    <div className="description-specialty">
-                        {dataDetailSpecialty &&
-                            !_.isEmpty(dataDetailSpecialty) && (
-                                <div
-                                    dangerouslySetInnerHTML={{
-                                        __html: dataDetailSpecialty.descriptionHTML,
-                                    }}
-                                ></div>
-                            )}
-                    </div>
-                    <div className="search-sp-doctor">
-                        {!_.isEmpty(listProvince) && (
+                    {!_.isEmpty(dataDetailSpecialty) && (
+                        <div className="description-specialty">
+                            {dataDetailSpecialty &&
+                                !_.isEmpty(dataDetailSpecialty) && (
+                                    <div
+                                        dangerouslySetInnerHTML={{
+                                            __html: dataDetailSpecialty.descriptionHTML,
+                                        }}
+                                    ></div>
+                                )}
+                        </div>
+                    )}
+                </div>
+                {!_.isEmpty(listProvince) && (
+                    <div className="doctor-search">
+                        <div className="search-sp-doctor">
                             <select onChange={(e) => this.handleOnchange(e)}>
                                 {listProvince &&
                                     listProvince.length > 0 &&
@@ -101,39 +141,58 @@ class DetailSpecialty extends Component {
                                         );
                                     })}
                             </select>
-                        )}
+                        </div>
                     </div>
-
-                    {arrDoctorId &&
-                        arrDoctorId.length > 0 &&
-                        arrDoctorId.map((item, index) => (
+                )}
+                {!_.isEmpty(arrDoctorId) && (
+                    <div className="doctor-item">
+                        <div>
+                            {arrDoctorId &&
+                                arrDoctorId.length > 0 &&
+                                arrDoctorId.map((item, index) => (
+                                    <div className="each-doctor">
+                                        <div className="dt-content-left">
+                                            <div className="profile-doctor">
+                                                <ProfileDoctor
+                                                    doctorId={item}
+                                                    isShowDescription={true}
+                                                    isShowLinkDetail={true}
+                                                    isShowPrice={false}
+                                                    // dataTime={dataTime}
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="dt-content-right">
+                                            <div className="doctor-schedule">
+                                                <DoctorSchedule
+                                                    detailDoctor={item}
+                                                    key={index}
+                                                />
+                                            </div>
+                                            <div className="doctor-extra-infor">
+                                                <DoctorExtraInfor
+                                                    detailDoctor={item}
+                                                    key={index}
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                        </div>
+                    </div>
+                )}
+                {!_.isEmpty(listProvince) && _.isEmpty(arrDoctorId) && (
+                    <div className="doctor-item">
+                        <div>
                             <div className="each-doctor">
-                                <div className="dt-content-left">
-                                    <div className="profile-doctor">
-                                        <ProfileDoctor
-                                            doctorId={item}
-                                            isShowDescription={true}
-                                            // dataTime={dataTime}
-                                        />
-                                    </div>
-                                </div>
-                                <div className="dt-content-right">
-                                    <div className="doctor-schedule">
-                                        <DoctorSchedule
-                                            detailDoctor={item}
-                                            key={index}
-                                        />
-                                    </div>
-                                    <div className="doctor-extra-infor">
-                                        <DoctorExtraInfor
-                                            detailDoctor={item}
-                                            key={index}
-                                        />
-                                    </div>
-                                </div>
+                                <p className="no-doctor">
+                                    Hiện không có bác sĩ nào ở tỉnh này. Vui
+                                    lòng chọn tỉnh khác!
+                                </p>
                             </div>
-                        ))}
-                </div>
+                        </div>
+                    </div>
+                )}
             </div>
         );
     }

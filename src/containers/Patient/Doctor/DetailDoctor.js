@@ -95,6 +95,7 @@ class DetailDoctor extends Component {
                             detailDoctor.Markdown &&
                             detailDoctor.Markdown.contentHTML && (
                                 <div
+                                    className="detail-doctor-content"
                                     dangerouslySetInnerHTML={{
                                         __html: detailDoctor.Markdown
                                             .contentHTML,

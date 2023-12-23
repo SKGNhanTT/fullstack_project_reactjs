@@ -4,8 +4,8 @@
 
     .content-left {
         background: center center no-repeat;
-        width: 100px;
-        height: 100px;
+        width: 150px;
+        height: 130px;
         overflow: hidden;
         border-radius: 50%;
         margin: 10px 20px;
@@ -25,7 +25,12 @@
         }
 
         .down {
-            // padding-top: 10px;
+            padding-right: 5px;
         }
+    }
+}
+.price {
+    .view-detail-doctor {
+        margin-left: 40px;
     }
 }

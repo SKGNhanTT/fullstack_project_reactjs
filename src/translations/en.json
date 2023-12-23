@@ -91,7 +91,8 @@
             "btn": "Appointment",
             "cancel-btn": "Close",
             "priceBooking": "Free booking",
-            "price": "Examination price: "
+            "price": "Examination price: ",
+            "see-more": "See more"
         }
     },
     "admin": {

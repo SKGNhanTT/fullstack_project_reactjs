@@ -8,6 +8,7 @@ import { getProfileDoctorById } from '../../../services/userService';
 import NumberFormat from 'react-number-format';
 import _ from 'lodash';
 import moment from 'moment';
+import { Link } from 'react-router-dom';
 
 class ProfileDoctor extends Component {
     constructor(props) {
@@ -39,6 +40,12 @@ class ProfileDoctor extends Component {
     async componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.props.doctorId !== prevProps.doctorId) {
             // this.getInforDoctor(this.props.doctorId);
+        }
+        if (this.props.doctorId !== prevProps.doctorId) {
+            let data = await this.getInforDoctor(this.props.doctorId);
+            this.setState({
+                dataProfile: data,
+            });
         }
     }
     renderTimeBooking = (dataTime) => {
@@ -80,7 +87,14 @@ class ProfileDoctor extends Component {
     }
     render() {
         let { dataProfile } = this.state;
-        let { language, isShowDescription, dataTime } = this.props;
+        let {
+            language,
+            isShowDescription,
+            dataTime,
+            isShowPrice,
+            isShowLinkDetail,
+            doctorId,
+        } = this.props;
 
         let nameVi, nameEN;
         if (dataProfile && dataProfile.positionData) {
@@ -125,8 +139,11 @@ class ProfileDoctor extends Component {
                     </div>
                 </div>
                 <div className="price">
-                    <FormattedMessage id="patient.booking-modal.price" />
-                    {dataProfile &&
+                    {isShowPrice && (
+                        <FormattedMessage id="patient.booking-modal.price" />
+                    )}
+                    {isShowPrice &&
+                    dataProfile &&
                     dataProfile.Doctor_Infor &&
                     language === LANGUAGES.VI ? (
                         <NumberFormat
@@ -141,7 +158,8 @@ class ProfileDoctor extends Component {
                     ) : (
                         ''
                     )}
-                    {dataProfile &&
+                    {isShowPrice &&
+                    dataProfile &&
                     dataProfile.Doctor_Infor &&
                     language === LANGUAGES.EN ? (
                         <NumberFormat
@@ -155,6 +173,13 @@ class ProfileDoctor extends Component {
                         />
                     ) : (
                         ''
+                    )}
+                    {isShowLinkDetail && (
+                        <div className="view-detail-doctor">
+                            <Link to={`/detail-doctor/${doctorId}`}>
+                                <FormattedMessage id="patient.booking-modal.see-more" />
+                            </Link>
+                        </div>
                     )}
                 </div>
             </Fragment>
