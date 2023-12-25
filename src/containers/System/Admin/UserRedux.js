@@ -103,7 +103,6 @@ class UserRedux extends Component {
         let file = data[0];
         if (file) {
             let base64 = await CommonUtils.toBase64(file);
-            console.log('check image', base64);
             let objectUrl = URL.createObjectURL(file);
             this.setState({
                 previewImgUrl: objectUrl,
@@ -213,7 +212,6 @@ class UserRedux extends Component {
         let positions = this.state.postionArr;
         let language = this.props.language;
         let isLoadingGender = this.props.isLoadingGender;
-        console.log('check gender', gendes);
 
         let {
             email,

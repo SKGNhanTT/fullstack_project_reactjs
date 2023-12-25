@@ -17,7 +17,6 @@ class Specialty extends React.Component {
 
     async componentDidMount() {
         let res = await getAllSpecialty();
-        console.log('check res', res);
         if (res && res.errCode === 0) {
             this.setState({
                 dataSpecialty: res.data,

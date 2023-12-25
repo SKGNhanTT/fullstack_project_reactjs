@@ -103,7 +103,6 @@ class ManageSchedule extends Component {
             return;
         }
         let formatedDate = new Date(currentDate).getTime();
-        console.log(formatedDate);
         if (rangeTime && rangeTime.length > 0) {
             let selectedTime = rangeTime.filter(
                 (item) => item.isSlected === true

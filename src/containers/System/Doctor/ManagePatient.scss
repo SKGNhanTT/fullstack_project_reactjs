@@ -1,0 +1,50 @@
+.manage-patient-container {
+    .m-p-titler {
+        font-size: 15px;
+        text-align: center;
+        text-transform: uppercase;
+        margin: 10px 0;
+        font-weight: 600;
+    }
+    .manage-patient-body {
+        padding: 0 20px;
+
+        .table-manage-patient {
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            td,
+            th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+            .btn-confirm {
+                border: none;
+                cursor: pointer;
+                outline: none;
+                margin-right: 10px;
+                height: 30px;
+                background: orange;
+                border-radius: 3px;
+                &:hover {
+                    opacity: 0.9;
+                }
+            }
+            .btn-send {
+                border: none;
+                cursor: pointer;
+                outline: none;
+                height: 30px;
+                background: rgb(0, 170, 255);
+                border-radius: 3px;
+                &:hover {
+                    opacity: 0.9;
+                }
+            }
+        }
+    }
+}

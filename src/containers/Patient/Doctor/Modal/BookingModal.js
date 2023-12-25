@@ -90,7 +90,7 @@ class BookingModal extends Component {
     };
 
     handleSaveChange = async () => {
-        let date = new Date(this.state.birth).getTime();
+        // let date = new Date(this.state.birth).getTime();
         let timeString = this.buildTimeBooking(this.props.dataTime);
         let doctorName = this.buildDoctorName(this.props.dataTime);
         let res = await postPatientBookingAppointment({
@@ -100,7 +100,7 @@ class BookingModal extends Component {
             address: this.state.address,
             reason: this.state.reason,
             selectedGender: this.state.selectedGender.value,
-            date: date,
+            date: this.props.dataTime.date,
             doctorId: this.state.doctorId,
             timeType: this.state.timeType,
             language: this.props.language,
@@ -120,6 +120,10 @@ class BookingModal extends Component {
                 selectedGender: '',
                 birth: '',
             });
+        } else if (res && res.errCode === 3) {
+            toast.error(
+                'At this time, doctor is not available. Please select another appointment slot.'
+            );
         } else {
             toast.error('Create appointment failed!');
         }

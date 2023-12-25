@@ -102,9 +102,7 @@ class DoctorSchedule extends Component {
     handleOnchangeSelect = async (e) => {
         let date = e.target.value;
         let doctorId = this.props.detailDoctor;
-        // console.log(doctorId, date);
         let res = await getScheduleDoctorByDate(doctorId, date);
-        console.log(res);
         if (res && res.errCode === 0) {
             this.setState({
                 allAvaiableTime: res.data ? res.data : [],

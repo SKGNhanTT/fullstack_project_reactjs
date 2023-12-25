@@ -42,7 +42,6 @@ class DetailClinic extends Component {
                         });
                     }
                 }
-                console.log(res);
 
                 this.setState({
                     dataDetailClinic: res.data,
