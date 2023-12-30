@@ -387,8 +387,10 @@ class ManageDoctor extends Component {
                             placeholder={
                                 <FormattedMessage id="admin.manage-doctor.select-doctor" />
                             }
+                            name="selectedDoctor"
                         />
                     </div>
+
                     <div className="content-right col-8">
                         <label>
                             <FormattedMessage id="admin.manage-doctor.infor" />

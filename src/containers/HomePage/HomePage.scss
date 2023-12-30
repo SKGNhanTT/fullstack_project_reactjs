@@ -34,7 +34,6 @@
 
 .section-share {
     &.section-specialty {
-        // background-image: url('../../assets/images/background/background_child.png');
         margin-top: 50px;
     }
     &.section-oustanding-doctor {
@@ -46,10 +45,8 @@
         border-bottom: 1px solid #f5f5f5;
     }
     &.section-medical-facility {
-        // background-image: url('../../assets/images/background/background_child.png');
     }
     &.section-HandBook {
-        background-image: url('../../assets/images/background/140311-background5.png');
     }
 
     .section-body {
@@ -87,7 +84,10 @@
                 }
 
                 &.section-medical-facility {
-                    background-image: url('../../assets/images/medical-facility/benhvien.jpg');
+                    width: 300px;
+                    height: 200px;
+                    overflow: hidden;
+                    margin: 0 auto;
                 }
                 &.section-oustanding-doctor {
                     // background-image: url('../../assets/images/specialty/thankinh.jpg');
@@ -99,6 +99,10 @@
                     margin: 0 auto;
                 }
                 &.section-HandBook {
+                    width: 300px;
+                    height: 200px;
+                    overflow: hidden;
+                    margin: 0 auto;
                     background-image: url('../../assets/images/specialty/tieuhoa.jpg');
                 }
             }
@@ -165,14 +169,13 @@
         gap: 50px;
         width: 100%;
         .section-left {
-            width: 50%;
+            width: 60%;
         }
         .section-right {
-            width: 50%;
+            width: 40%;
             p {
                 text-align: justify;
                 font-style: italic;
-                padding-top: 15px;
             }
         }
     }
@@ -189,7 +192,41 @@
             gap: 10px;
             .name-specialty {
                 text-align: center;
-                margin-top: 7px;
+                margin-top: 10px;
+            }
+        }
+    }
+}
+
+.section-medical-facility {
+    .section-body {
+        .section-customize {
+            width: 350px !important;
+            height: 280px !important;
+            border: 1px solid #cac6c6;
+            padding: 20px 5px;
+            display: flex;
+            gap: 10px;
+            .name-medical {
+                text-align: center;
+                margin-top: 10px;
+            }
+        }
+    }
+}
+
+.section-HandBook {
+    .section-body {
+        .section-customize {
+            width: 350px !important;
+            height: 260px !important;
+            border: 1px solid #cac6c6;
+            padding: 20px 5px;
+            display: flex;
+            gap: 10px;
+            .name-handbook {
+                text-align: center;
+                margin-top: 10px;
             }
         }
     }
@@ -254,6 +291,18 @@
                     overflow: hidden;
                     margin: 0 auto;
                 }
+                &.section-medical-facility {
+                    width: 245px !important;
+                    height: 165px !important;
+                    overflow: hidden;
+                    margin: 0 auto;
+                }
+                &.section-HandBook {
+                    width: 245px !important;
+                    height: 165px !important;
+                    overflow: hidden;
+                    margin: 0 auto;
+                }
             }
         }
     }
@@ -270,7 +319,41 @@
                 gap: 10px;
                 .name-specialty {
                     text-align: center;
-                    margin-top: 5px;
+                    margin-top: 7px;
+                }
+            }
+        }
+    }
+    // medical---------------------------------------------------------------------
+    .section-medical-facility {
+        .section-body {
+            .section-customize {
+                width: 280px !important;
+                height: 240px !important;
+                border: 1px solid #cac6c6;
+                padding: 20px 5px;
+                display: flex;
+                gap: 10px;
+                .name-medical {
+                    text-align: center;
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
+    // handbook---------------------------------------------------------------------
+    .section-HandBook {
+        .section-body {
+            .section-customize {
+                width: 280px !important;
+                height: 240px !important;
+                border: 1px solid #cac6c6;
+                padding: 20px 5px;
+                display: flex;
+                gap: 10px;
+                .name-handbook {
+                    text-align: center;
+                    margin-top: 10px;
                 }
             }
         }

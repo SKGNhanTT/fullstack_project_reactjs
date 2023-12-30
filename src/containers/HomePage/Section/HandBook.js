@@ -17,27 +17,27 @@ class HandBook extends React.Component {
                         <Slider {...this.props.setting}>
                             <div className="section-customize">
                                 <div className="bg-img section-HandBook"></div>
-                                <h3>Cơ xương khớp</h3>
+                                <h6 className="name-handbook">Cơ xương khớp</h6>
                             </div>
                             <div className="section-customize">
                                 <div className="bg-img section-HandBook"></div>
-                                <h3>Cơ xương khớp</h3>
+                                <h6 className="name-handbook">Cơ xương khớp</h6>
                             </div>
                             <div className="section-customize">
                                 <div className="bg-img section-HandBook"></div>
-                                <h3>Cơ xương khớp</h3>
+                                <h6 className="name-handbook">Cơ xương khớp</h6>
                             </div>
                             <div className="section-customize">
                                 <div className="bg-img section-HandBook"></div>
-                                <h3>Cơ xương khớp</h3>
+                                <h6>Cơ xương khớp</h6>
                             </div>
                             <div className="section-customize">
                                 <div className="bg-img section-HandBook"></div>
-                                <h3>Cơ xương khớp</h3>
+                                <h6 className="name-handbook">Cơ xương khớp</h6>
                             </div>
                             <div className="section-customize">
                                 <div className="bg-img section-HandBook"></div>
-                                <h3>Cơ xương khớp</h3>
+                                <h6 className="name-handbook">Cơ xương khớp</h6>
                             </div>
                         </Slider>
                     </div>

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Slider from 'react-slick';
-import './Specialty.scss';
 import { getAllSpecialty } from '../../../services/userService';
 import { FormattedMessage } from 'react-intl';
 import { withRouter } from 'react-router';
@@ -67,9 +66,9 @@ class Specialty extends React.Component {
                                                     )
                                                 }
                                             ></div>
-                                            <h5 className="name-specialty">
+                                            <h6 className="name-specialty">
                                                 {item.name}
-                                            </h5>
+                                            </h6>
                                         </div>
                                     );
                                 })}

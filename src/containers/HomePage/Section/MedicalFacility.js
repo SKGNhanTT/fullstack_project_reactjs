@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './MedicalFacility.scss';
 import Slider from 'react-slick';
 import { getAllClinic } from '../../../services/userService';
 import { withRouter } from 'react-router';
@@ -59,7 +58,9 @@ class MedicalFacility extends Component {
                                                         )
                                                     }
                                                 ></div>
-                                                <h5>{item.name}</h5>
+                                                <h6 className="name-medical">
+                                                    {item.name}
+                                                </h6>
                                             </div>
                                         );
                                     })}
