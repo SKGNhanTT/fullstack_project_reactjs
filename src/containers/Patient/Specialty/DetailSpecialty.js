@@ -12,6 +12,8 @@ import {
     getAllCodeService,
 } from '../../../services/userService';
 import _ from 'lodash';
+import HomeFooter from '../../HomePage/HomeFooter';
+import LoadingOverlay from 'react-loading-overlay';
 
 class DetailSpecialty extends Component {
     constructor(props) {
@@ -20,6 +22,7 @@ class DetailSpecialty extends Component {
             arrDoctorId: [],
             dataDetailSpecialty: {},
             listProvince: [],
+            isLoadingOverlay: true,
         };
     }
 
@@ -65,6 +68,7 @@ class DetailSpecialty extends Component {
                     dataDetailSpecialty: res.data,
                     arrDoctorId: arrDoctorId,
                     listProvince: dataProvince ? dataProvince : [],
+                    isLoadingOverlay: false,
                 });
             }
         }
@@ -107,92 +111,104 @@ class DetailSpecialty extends Component {
 
         return (
             <div className="detail-specialty-container">
-                <HomeHeader />
-                <div className="detail-specialty-body">
-                    {!_.isEmpty(dataDetailSpecialty) && (
-                        <div className="description-specialty">
-                            {dataDetailSpecialty &&
-                                !_.isEmpty(dataDetailSpecialty) && (
-                                    <div
-                                        dangerouslySetInnerHTML={{
-                                            __html: dataDetailSpecialty.descriptionHTML,
-                                        }}
-                                    ></div>
-                                )}
-                        </div>
-                    )}
-                </div>
-                {!_.isEmpty(listProvince) && (
-                    <div className="doctor-search">
-                        <div className="search-sp-doctor">
-                            <select onChange={(e) => this.handleOnchange(e)}>
-                                {listProvince &&
-                                    listProvince.length > 0 &&
-                                    listProvince.map((item) => {
-                                        return (
-                                            <option
-                                                key={item.id}
-                                                value={item.keyMap}
-                                            >
-                                                {language === LANGUAGES.VI
-                                                    ? item.valueVi
-                                                    : item.valueEn}
-                                            </option>
-                                        );
-                                    })}
-                            </select>
-                        </div>
+                <LoadingOverlay
+                    active={this.state.isLoadingOverlay}
+                    spinner
+                    text="Loading..."
+                >
+                    <HomeHeader />
+                    <div className="detail-specialty-body">
+                        {!_.isEmpty(dataDetailSpecialty) && (
+                            <div className="description-specialty">
+                                {dataDetailSpecialty &&
+                                    !_.isEmpty(dataDetailSpecialty) && (
+                                        <div
+                                            dangerouslySetInnerHTML={{
+                                                __html: dataDetailSpecialty.descriptionHTML,
+                                            }}
+                                        ></div>
+                                    )}
+                            </div>
+                        )}
                     </div>
-                )}
-                {!_.isEmpty(arrDoctorId) && (
-                    <div className="doctor-item">
-                        <div>
-                            {arrDoctorId &&
-                                arrDoctorId.length > 0 &&
-                                arrDoctorId.map((item, index) => (
-                                    <div className="each-doctor">
-                                        <div className="dt-content-left">
-                                            <div className="profile-doctor">
-                                                <ProfileDoctor
-                                                    doctorId={item}
-                                                    isShowDescription={true}
-                                                    isShowLinkDetail={true}
-                                                    isShowPrice={false}
-                                                    // dataTime={dataTime}
-                                                />
-                                            </div>
-                                        </div>
-                                        <div className="dt-content-right">
-                                            <div className="doctor-schedule">
-                                                <DoctorSchedule
-                                                    detailDoctor={item}
-                                                    key={index}
-                                                />
-                                            </div>
-                                            <div className="doctor-extra-infor">
-                                                <DoctorExtraInfor
-                                                    detailDoctor={item}
-                                                    key={index}
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                ))}
-                        </div>
-                    </div>
-                )}
-                {!_.isEmpty(listProvince) && _.isEmpty(arrDoctorId) && (
-                    <div className="doctor-item">
-                        <div>
-                            <div className="each-doctor">
-                                <p className="no-doctor">
-                                    Hiện không có bác sĩ nào ở tỉnh này. Vui
-                                    lòng chọn tỉnh khác!
-                                </p>
+                    {!_.isEmpty(listProvince) && (
+                        <div className="doctor-search">
+                            <div className="search-sp-doctor">
+                                <select
+                                    onChange={(e) => this.handleOnchange(e)}
+                                >
+                                    {listProvince &&
+                                        listProvince.length > 0 &&
+                                        listProvince.map((item) => {
+                                            return (
+                                                <option
+                                                    key={item.id}
+                                                    value={item.keyMap}
+                                                >
+                                                    {language === LANGUAGES.VI
+                                                        ? item.valueVi
+                                                        : item.valueEn}
+                                                </option>
+                                            );
+                                        })}
+                                </select>
                             </div>
                         </div>
-                    </div>
-                )}
+                    )}
+                    {!_.isEmpty(arrDoctorId) && (
+                        <div className="doctor-item">
+                            <div>
+                                {arrDoctorId &&
+                                    arrDoctorId.length > 0 &&
+                                    arrDoctorId.map((item, index) => (
+                                        <div className="each-doctor">
+                                            <div className="dt-content-left">
+                                                <div className="profile-doctor">
+                                                    <ProfileDoctor
+                                                        doctorId={item}
+                                                        isShowDescription={true}
+                                                        isShowLinkDetail={true}
+                                                        isShowPrice={false}
+                                                        // dataTime={dataTime}
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div className="dt-content-right">
+                                                <div className="doctor-schedule">
+                                                    <DoctorSchedule
+                                                        detailDoctor={item}
+                                                        key={index}
+                                                    />
+                                                </div>
+                                                <div className="doctor-extra-infor">
+                                                    <DoctorExtraInfor
+                                                        detailDoctorExtra={item}
+                                                        key={index}
+                                                        isShowDetail={false}
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))}
+                            </div>
+                        </div>
+                    )}
+                    {!_.isEmpty(listProvince) && _.isEmpty(arrDoctorId) && (
+                        <div className="doctor-item">
+                            <div>
+                                <div className="each-doctor">
+                                    <p className="no-doctor">
+                                        Hiện không có bác sĩ nào ở tỉnh này. Vui
+                                        lòng chọn tỉnh khác!
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+                    {!_.isEmpty(arrDoctorId) &&
+                        !_.isEmpty(dataDetailSpecialty) &&
+                        !_.isEmpty(listProvince) && <HomeFooter />}
+                </LoadingOverlay>
             </div>
         );
     }

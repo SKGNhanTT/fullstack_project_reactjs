@@ -4,8 +4,6 @@ import './RemedyModal.scss';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 // import DatePicker from '../../../../components/Input/DatePicker';
-import Select from 'react-select';
-import { toast } from 'react-toastify';
 import { FormattedMessage } from 'react-intl';
 import { CommonUtils } from '../../../utils';
 

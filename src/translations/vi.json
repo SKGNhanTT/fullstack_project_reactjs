@@ -100,8 +100,9 @@
     "admin": {
         "manage-doctor": {
             "title": "Thêm thông tin bác sĩ",
-            "select-doctor": "Chọn bác sĩ:",
-            "infor": "Thông tin giới thiệu:",
+            "select-doctor": "Chọn bác sĩ",
+            "inforEn": "Thông tin giới thiệu bằng Tiếng Anh",
+            "inforVi": "Thông tin giới thiệu bằng Tiếng Việt",
             "btn-save": "Lưu thông tin",
             "btn-add": "Tạo thông tin",
             "price": "Giá khám bệnh",
@@ -109,9 +110,12 @@
             "province": "Tỉnh thành",
             "nameClinic": "Tên Phòng khám",
             "addressClinic": "Địa chỉ Phòng khám",
-            "note": "Ghi chú",
+            "noteEn": "Ghi chú bằng Tiếng Anh",
+            "noteVi": "Ghi chú bằng Tiếng Việt",
             "specialty": "Chuyên khoa",
-            "select-clinic": "Phòng khám"
+            "select-clinic": "Phòng khám",
+            "markdown-en": "Thông tin chi tiết bằng Tiếng Anh",
+            "markdown-vi": "Thông tin chi tiết bằng Tiếng Việt"
         }
     }
 }

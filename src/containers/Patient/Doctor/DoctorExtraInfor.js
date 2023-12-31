@@ -9,7 +9,7 @@ import { FormattedMessage } from 'react-intl';
 class DoctorExtraInfor extends Component {
     constructor(props) {
         super(props);
-        this.state = { isShowDetail: false, extraInfo: {} };
+        this.state = { isShowDetail: true, extraInfo: {} };
     }
 
     async componentDidMount() {
@@ -18,6 +18,17 @@ class DoctorExtraInfor extends Component {
             if (res && res.errCode === 0) {
                 this.setState({
                     extraInfo: res.data,
+                });
+            }
+        }
+        if (this.props.detailDoctorExtra) {
+            let res = await getExtraInforDoctorById(
+                this.props.detailDoctorExtra
+            );
+            if (res && res.errCode === 0) {
+                this.setState({
+                    extraInfo: res.data,
+                    isShowDetail: false,
                 });
             }
         }
@@ -149,18 +160,26 @@ class DoctorExtraInfor extends Component {
                                         </span>
                                     </div>
                                     <div className="note">
-                                        {extraInfo &&
+                                        {language === LANGUAGES.VI &&
+                                            extraInfo &&
                                             extraInfo.priceTypeData &&
-                                            extraInfo.note}
+                                            extraInfo.noteVi}
+                                        {language === LANGUAGES.EN &&
+                                            extraInfo &&
+                                            extraInfo.priceTypeData &&
+                                            extraInfo.noteEn}
                                     </div>
                                 </div>
                                 <div className="payment">
                                     <FormattedMessage id="patient.extra-infor-doctor.payment" />
                                     {extraInfo &&
-                                    extraInfo.paymentTypeData &&
-                                    language === LANGUAGES.VI
-                                        ? extraInfo.paymentTypeData.valueVi
-                                        : extraInfo.paymentTypeData.valueEn}
+                                        extraInfo.paymentTypeData &&
+                                        language === LANGUAGES.VI &&
+                                        extraInfo.paymentTypeData.valueVi}
+                                    {extraInfo &&
+                                        extraInfo.paymentTypeData &&
+                                        language === LANGUAGES.EN &&
+                                        extraInfo.paymentTypeData.valueEn}
                                 </div>
                                 <div className="hide-price">
                                     <span

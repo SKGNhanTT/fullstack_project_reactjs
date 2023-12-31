@@ -98,9 +98,10 @@
     },
     "admin": {
         "manage-doctor": {
-            "title": "DOCTOR PLAN MANAGEMENT",
+            "title": "ADD DOCTOR'S INFORMATION",
             "select-doctor": "Choose doctor:",
-            "infor": "Introduction:",
+            "inforEn": "Introduction in English",
+            "inforVi": "Introduction in Vietnamese",
             "btn-save": "Save information",
             "btn-add": "Create information",
             "price": "Price",
@@ -108,9 +109,12 @@
             "province": "Province",
             "nameClinic": "Clinic name",
             "addressClinic": "Clinic address",
-            "note": "Note",
+            "noteEn": "Note in English",
+            "noteVi": "Note in Vietnamese",
             "specialty": "Specialty",
-            "select-clinic": "Clinic"
+            "select-clinic": "Clinic",
+            "markdown-en": "Detailed information in English",
+            "markdown-vi": "Detailed information in Vietnamese"
         }
     }
 }

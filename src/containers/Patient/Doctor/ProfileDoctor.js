@@ -96,10 +96,10 @@ class ProfileDoctor extends Component {
             doctorId,
         } = this.props;
 
-        let nameVi, nameEN;
+        let nameVi, nameEn;
         if (dataProfile && dataProfile.positionData) {
-            nameVi = `${dataProfile.positionData.valueVi}, ${dataProfile.firstName} ${dataProfile.lastName}`;
-            nameEN = `${dataProfile.positionData.valueEn}, ${dataProfile.lastName} ${dataProfile.firstName}`;
+            nameVi = `${dataProfile.positionData.valueVi}, ${dataProfile.lastName} ${dataProfile.firstName}`;
+            nameEn = `${dataProfile.positionData.valueEn}, ${dataProfile.firstName} ${dataProfile.lastName}`;
         }
 
         return (
@@ -117,17 +117,28 @@ class ProfileDoctor extends Component {
                     ></div>
                     <div className="content-right">
                         <div className="up">
-                            {language === LANGUAGES.VI ? nameVi : nameEN}
+                            {language === LANGUAGES.VI ? nameVi : nameEn}
                         </div>
                         <div className="down">
                             {isShowDescription ? (
                                 <>
-                                    {dataProfile.Markdown &&
-                                        dataProfile.Markdown.description && (
+                                    {language === LANGUAGES.VI &&
+                                        dataProfile.Markdown &&
+                                        dataProfile.Markdown.descriptionVi && (
                                             <span>
                                                 {
                                                     dataProfile.Markdown
-                                                        .description
+                                                        .descriptionVi
+                                                }
+                                            </span>
+                                        )}
+                                    {language === LANGUAGES.EN &&
+                                        dataProfile.Markdown &&
+                                        dataProfile.Markdown.descriptionEn && (
+                                            <span>
+                                                {
+                                                    dataProfile.Markdown
+                                                        .descriptionEn
                                                 }
                                             </span>
                                         )}
