@@ -13,11 +13,15 @@ class ManageClinic extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: '',
-            address: '',
+            nameEn: '',
+            nameVi: '',
+            addressEn: '',
+            addressVi: '',
             imageBase64: '',
-            descriptionHTML: '',
-            descriptionMarkdown: '',
+            descriptionHTMLEn: '',
+            descriptionHTMLVi: '',
+            descriptionMarkdownEn: '',
+            descriptionMarkdownVi: '',
         };
     }
 
@@ -33,10 +37,16 @@ class ManageClinic extends Component {
         });
     };
 
-    handleEditorChange = ({ html, text }) => {
+    handleEditorChange1 = ({ html, text }) => {
         this.setState({
-            descriptionMarkdown: text,
-            descriptionHTML: html,
+            descriptionMarkdownEn: text,
+            descriptionHTMLEn: html,
+        });
+    };
+    handleEditorChange2 = ({ html, text }) => {
+        this.setState({
+            descriptionMarkdownVi: text,
+            descriptionHTMLVi: html,
         });
     };
 
@@ -57,11 +67,15 @@ class ManageClinic extends Component {
         if (res && res.errCode === 0) {
             toast.success('Create new specialty succeed!');
             this.setState({
-                name: '',
-                address: '',
+                nameEn: '',
+                nameVi: '',
+                addressEn: '',
+                addressVi: '',
                 imageBase64: '',
-                descriptionHTML: '',
-                descriptionMarkdown: '',
+                descriptionHTMLEn: '',
+                descriptionHTMLVi: '',
+                descriptionMarkdownEn: '',
+                descriptionMarkdownVi: '',
             });
         } else {
             toast.error('Create failed!');
@@ -76,13 +90,13 @@ class ManageClinic extends Component {
 
                     <div className="add-new-specialty row">
                         <div className="col-6 form-group">
-                            <label>Tên phòng khám</label>
+                            <label>Tên phòng khám bằng tiếng Anh</label>
                             <input
                                 type="text"
                                 className="form-control"
-                                value={this.state.name}
+                                value={this.state.nameEn}
                                 onChange={(event) =>
-                                    this.handleOnChangeInput(event, 'name')
+                                    this.handleOnChangeInput(event, 'nameEn')
                                 }
                             />
                         </div>
@@ -95,22 +109,54 @@ class ManageClinic extends Component {
                             />
                         </div>
                         <div className="col-6 form-group">
-                            <label>Địa chỉ phòng khám</label>
+                            <label>Tên phòng khám bằng tiếng Việt</label>
                             <input
                                 type="text"
                                 className="form-control"
-                                value={this.state.address}
+                                value={this.state.nameVi}
                                 onChange={(event) =>
-                                    this.handleOnChangeInput(event, 'address')
+                                    this.handleOnChangeInput(event, 'nameVi')
+                                }
+                            />
+                        </div>
+                        <div className="col-6 form-group">
+                            <label>Địa chỉ phòng khám bằng tiếng Anh</label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                value={this.state.addressEn}
+                                onChange={(event) =>
+                                    this.handleOnChangeInput(event, 'addressEn')
+                                }
+                            />
+                        </div>
+                        <div className="col-6 form-group">
+                            <label>Địa chỉ phòng khám bằng tiếng Việt</label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                value={this.state.addressVi}
+                                onChange={(event) =>
+                                    this.handleOnChangeInput(event, 'addressVi')
                                 }
                             />
                         </div>
                         <div className="col-12">
+                            <label>Mô tả phòng khám bằng tiếng Anh</label>
                             <MdEditor
                                 style={{ height: '400px' }}
                                 renderHTML={(text) => mdParser.render(text)}
-                                onChange={this.handleEditorChange}
-                                value={this.state.descriptionMarkdown}
+                                onChange={this.handleEditorChange1}
+                                value={this.state.descriptionMarkdownEn}
+                            />
+                        </div>
+                        <div className="col-12">
+                            <label>Mô tả phòng khám bằng tiếng Việt</label>
+                            <MdEditor
+                                style={{ height: '400px' }}
+                                renderHTML={(text) => mdParser.render(text)}
+                                onChange={this.handleEditorChange2}
+                                value={this.state.descriptionMarkdownVi}
                             />
                         </div>
                         <div className="col-12">

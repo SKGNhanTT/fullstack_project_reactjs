@@ -48,9 +48,12 @@ class DetailDoctor extends Component {
     async componentDidUpdate(prevProps, prevState, snapshot) {
         if (
             prevState.detailDoctor.Doctor_Infor !==
-            this.state.detailDoctor.Doctor_Infor
+                this.state.detailDoctor.Doctor_Infor ||
+            this.props.language !== prevProps.language
         ) {
             let res = await getAllSpecialty();
+            console.log('res', res);
+            console.log('check', this.state.detailDoctor.Doctor_Infor);
             let name = '';
             if (res.data && res.data.length > 0) {
                 res.data.map((item) => {
@@ -58,7 +61,9 @@ class DetailDoctor extends Component {
                         item.id ===
                         this.state.detailDoctor.Doctor_Infor.specialtyId
                     ) {
-                        name = item.name;
+                        this.props.language === LANGUAGES.VI
+                            ? (name = item.nameVi)
+                            : (name = item.nameEn);
                     }
                     return name;
                 });
@@ -77,11 +82,12 @@ class DetailDoctor extends Component {
 
     render() {
         let { detailDoctor, nameSpecilaty } = this.state;
+        console.log('nameSpecilaty', nameSpecilaty);
         let { language } = this.props;
-        let nameVi, nameEN;
+        let nameVi, nameEn;
         if (detailDoctor && detailDoctor.positionData) {
             nameVi = `${detailDoctor.positionData.valueVi}, ${detailDoctor.lastName} ${detailDoctor.firstName}`;
-            nameEN = `${detailDoctor.positionData.valueEn}, ${detailDoctor.firstName} ${detailDoctor.lastName}`;
+            nameEn = `${detailDoctor.positionData.valueEn}, ${detailDoctor.firstName} ${detailDoctor.lastName}`;
         }
         return (
             <LoadingOverlay
@@ -112,7 +118,7 @@ class DetailDoctor extends Component {
                                         {nameSpecilaty}
                                     </span>
                                 )}{' '}
-                                / {language === LANGUAGES.VI ? nameVi : nameEN}
+                                / {language === LANGUAGES.VI ? nameVi : nameEn}
                             </div>
                         )}
                         <div className="intro-contor">
@@ -130,7 +136,7 @@ class DetailDoctor extends Component {
                                 <div className="up">
                                     {language === LANGUAGES.VI
                                         ? nameVi
-                                        : nameEN}
+                                        : nameEn}
                                 </div>
                                 <div className="down">
                                     {language === LANGUAGES.VI &&

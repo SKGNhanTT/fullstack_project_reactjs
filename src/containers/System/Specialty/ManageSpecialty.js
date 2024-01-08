@@ -13,10 +13,13 @@ class ManageSpecialty extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: '',
+            nameEn: '',
+            nameVi: '',
             imageBase64: '',
-            descriptionHTML: '',
-            descriptionMarkdown: '',
+            descriptionHTMLEn: '',
+            descriptionHTMLVi: '',
+            descriptionMarkdownEn: '',
+            descriptionMarkdownVi: '',
         };
     }
 
@@ -32,10 +35,16 @@ class ManageSpecialty extends Component {
         });
     };
 
-    handleEditorChange = ({ html, text }) => {
+    handleEditorChangeEn = ({ html, text }) => {
         this.setState({
-            descriptionMarkdown: text,
-            descriptionHTML: html,
+            descriptionMarkdownEn: text,
+            descriptionHTMLEn: html,
+        });
+    };
+    handleEditorChangeVi = ({ html, text }) => {
+        this.setState({
+            descriptionMarkdownVi: text,
+            descriptionHTMLVi: html,
         });
     };
 
@@ -57,10 +66,13 @@ class ManageSpecialty extends Component {
         if (res && res.errCode === 0) {
             toast.success('Create new specialty succeed!');
             this.setState({
-                name: '',
+                nameEn: '',
+                nameVi: '',
                 imageBase64: '',
-                descriptionHTML: '',
-                descriptionMarkdown: '',
+                descriptionHTMLEn: '',
+                descriptionHTMLVi: '',
+                descriptionMarkdownEn: '',
+                descriptionMarkdownVi: '',
             });
         } else {
             toast.error('Create failed!');
@@ -75,13 +87,13 @@ class ManageSpecialty extends Component {
 
                     <div className="add-new-specialty row">
                         <div className="col-6 form-group">
-                            <label>Tên chuyên khoa</label>
+                            <label>Tên chuyên khoa tiếng Anh</label>
                             <input
                                 type="text"
                                 className="form-control"
                                 value={this.state.name}
                                 onChange={(event) =>
-                                    this.handleOnChangeInput(event, 'name')
+                                    this.handleOnChangeInput(event, 'nameEn')
                                 }
                             />
                         </div>
@@ -93,12 +105,33 @@ class ManageSpecialty extends Component {
                                 onChange={(e) => this.handleOnchangeImage(e)}
                             />
                         </div>
+                        <div className="col-6 form-group">
+                            <label>Tên chuyên khoa tiếng Việt</label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                value={this.state.name}
+                                onChange={(event) =>
+                                    this.handleOnChangeInput(event, 'nameVi')
+                                }
+                            />
+                        </div>
                         <div className="col-12">
+                            <label>Mô tả chuyên khoa bằng tiếng Anh</label>
                             <MdEditor
                                 style={{ height: '400px' }}
                                 renderHTML={(text) => mdParser.render(text)}
-                                onChange={this.handleEditorChange}
-                                value={this.state.descriptionMarkdown}
+                                onChange={this.handleEditorChangeEn}
+                                value={this.state.descriptionMarkdownEn}
+                            />
+                        </div>
+                        <div className="col-12">
+                            <label>Mô tả chuyên khoa bằng tiếng Việt</label>
+                            <MdEditor
+                                style={{ height: '400px' }}
+                                renderHTML={(text) => mdParser.render(text)}
+                                onChange={this.handleEditorChangeVi}
+                                value={this.state.descriptionMarkdownVi}
                             />
                         </div>
                         <div className="col-12">

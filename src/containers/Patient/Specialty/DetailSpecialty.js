@@ -137,7 +137,10 @@ class DetailSpecialty extends Component {
                                 className="fa-solid fa-house"
                                 onClick={() => this.handleIconBack()}
                             ></i>{' '}
-                            / {dataDetailSpecialty.name}
+                            /{' '}
+                            {language === LANGUAGES.VI
+                                ? dataDetailSpecialty.nameVi
+                                : dataDetailSpecialty.nameEn}
                         </div>
                     )}
                     <div className="detail-specialty-body">
@@ -152,7 +155,10 @@ class DetailSpecialty extends Component {
                                                     : '100%',
                                             }}
                                             dangerouslySetInnerHTML={{
-                                                __html: dataDetailSpecialty.descriptionHTML,
+                                                __html:
+                                                    language === LANGUAGES.VI
+                                                        ? dataDetailSpecialty.descriptionHTMLVi
+                                                        : dataDetailSpecialty.descriptionHTMLEn,
                                             }}
                                         ></div>
                                     )}
@@ -168,7 +174,7 @@ class DetailSpecialty extends Component {
                                                 this.handleShowDetail()
                                             }
                                         >
-                                            Xem chi tiết
+                                            {isShowDetail ? 'Ẩn' : 'Xem thêm'}
                                         </span>
                                     )}
                             </div>

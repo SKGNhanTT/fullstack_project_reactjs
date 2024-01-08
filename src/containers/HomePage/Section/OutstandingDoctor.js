@@ -100,10 +100,12 @@ class OutstandingDoctor extends Component {
                                                                 : nameEN}
                                                         </h6>
                                                         <span>
-                                                            {
-                                                                item.Markdown
-                                                                    .specialtyName
-                                                            }
+                                                            {language ===
+                                                            LANGUAGES.VI
+                                                                ? item.Markdown
+                                                                      .specialtyNameVi
+                                                                : item.Markdown
+                                                                      .specialtyNameEn}
                                                         </span>
                                                     </div>
                                                 </div>

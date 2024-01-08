@@ -69,7 +69,10 @@ class DetailClinic extends Component {
                                         <div>{dataDetailClinic.name}</div>
                                         <div
                                             dangerouslySetInnerHTML={{
-                                                __html: dataDetailClinic.descriptionHTML,
+                                                __html:
+                                                    language === LANGUAGES.VI
+                                                        ? dataDetailClinic.descriptionHTMLVi
+                                                        : dataDetailClinic.descriptionHTMLEn,
                                             }}
                                         ></div>
                                     </>

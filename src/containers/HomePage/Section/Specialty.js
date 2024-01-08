@@ -5,6 +5,7 @@ import Slider from 'react-slick';
 import { getAllSpecialty } from '../../../services/userService';
 import { FormattedMessage } from 'react-intl';
 import { withRouter } from 'react-router';
+import { LANGUAGES } from '../../../utils';
 
 class Specialty extends React.Component {
     constructor(props) {
@@ -31,6 +32,7 @@ class Specialty extends React.Component {
 
     render() {
         let { dataSpecialty } = this.state;
+        let { language } = this.props;
 
         return (
             <div className="section-share section-specialty">
@@ -67,7 +69,9 @@ class Specialty extends React.Component {
                                                 }
                                             ></div>
                                             <h6 className="name-specialty">
-                                                {item.name}
+                                                {language === LANGUAGES.VI
+                                                    ? item.nameVi
+                                                    : item.nameEn}
                                             </h6>
                                         </div>
                                     );

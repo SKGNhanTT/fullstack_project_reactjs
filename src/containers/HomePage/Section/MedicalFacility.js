@@ -4,6 +4,7 @@ import Slider from 'react-slick';
 import { getAllClinic } from '../../../services/userService';
 import { withRouter } from 'react-router';
 import { FormattedMessage } from 'react-intl';
+import { LANGUAGES } from '../../../utils';
 
 class MedicalFacility extends Component {
     constructor(props) {
@@ -29,6 +30,7 @@ class MedicalFacility extends Component {
     };
     render() {
         let { dataClinic } = this.state;
+        let { language } = this.props;
         return (
             <div>
                 <div className="section-share section-medical-facility">
@@ -65,7 +67,9 @@ class MedicalFacility extends Component {
                                                     }
                                                 ></div>
                                                 <h6 className="name-medical">
-                                                    {item.name}
+                                                    {language === LANGUAGES.VI
+                                                        ? item.nameVi
+                                                        : item.nameEn}
                                                 </h6>
                                             </div>
                                         );
@@ -82,6 +86,7 @@ class MedicalFacility extends Component {
 const mapStateToProps = (state) => {
     return {
         isLoggedIn: state.user.isLoggedIn,
+        language: state.app.language,
     };
 };
 

@@ -103,15 +103,15 @@ class ManageDoctor extends Component {
             if (type === 'SPECIALTY') {
                 data.map((item) => {
                     let object = {};
-                    // let labelVi = `${item.valueVi}`;
+                    let labelVi = `${item.nameVi}`;
 
-                    // let labelEn = `${item.valueEn}`;
+                    let labelEn = `${item.nameEn}`;
 
-                    // object.label =
-                    //     language === LANGUAGES.VI ? labelVi : labelEn;
-                    // object.value = item.keyMap;
-                    object.label = item.name;
-                    object.value = item.id;
+                    object.label =
+                        language === LANGUAGES.VI ? labelVi : labelEn;
+                    object.labelEn = labelEn;
+                    object.labelvi = labelVi;
+                    object.value = object.value = item.id;
                     res.push(object);
                 });
             }
@@ -119,15 +119,15 @@ class ManageDoctor extends Component {
             if (type === 'CLINIC') {
                 data.map((item) => {
                     let object = {};
-                    // let labelVi = `${item.valueVi}`;
+                    let labelVi = `${item.nameVi}`;
 
-                    // let labelEn = `${item.valueEn}`;
+                    let labelEn = `${item.nameEn}`;
 
-                    // object.label =
-                    //     language === LANGUAGES.VI ? labelVi : labelEn;
-                    // object.value = item.keyMap;
-                    object.label = item.name;
-                    object.value = item.id;
+                    object.label =
+                        language === LANGUAGES.VI ? labelVi : labelEn;
+                    object.labelEn = labelEn;
+                    object.labelvi = labelVi;
+                    object.value = object.value = item.id;
                     res.push(object);
                 });
             }
@@ -164,11 +164,21 @@ class ManageDoctor extends Component {
                 this.props.allRequiredDoctorInfor.resProvince,
                 'PROVINCE'
             );
+            let dataSpecialty = this.builDataInputSelect(
+                this.props.allRequiredDoctorInfor.resSpecialty,
+                'SPECIALTY'
+            );
+            let dataClinic = this.builDataInputSelect(
+                this.props.allRequiredDoctorInfor.resClinic,
+                'CLINIC'
+            );
             this.setState({
                 listDoctor: dataSelect,
                 listPrice: dataPrice,
                 listPayment: dataPayment,
                 listProvince: dataProvince,
+                listSpecialty: dataSpecialty,
+                listClinic: dataClinic,
             });
         }
         if (
@@ -252,16 +262,9 @@ class ManageDoctor extends Component {
                 this.state.selectedClinic && this.state.selectedClinic.value
                     ? this.state.selectedClinic.value
                     : '',
-            specialtyId:
-                this.state.selectedSpecialty &&
-                this.state.selectedSpecialty.value
-                    ? this.state.selectedSpecialty.value
-                    : '',
-            specialtyName:
-                this.state.selectedSpecialty &&
-                this.state.selectedSpecialty.label
-                    ? this.state.selectedSpecialty.label
-                    : '',
+            specialtyId: this.state.selectedSpecialty.value,
+            specialtyNameEn: this.state.selectedSpecialty.labelEn,
+            specialtyNameVi: this.state.selectedSpecialty.labelVi,
         });
 
         this.setState({
@@ -332,10 +335,10 @@ class ManageDoctor extends Component {
                 });
 
                 let selectedSpecialty = listSpecialty.find((item) => {
-                    return item && item.value === clinicId;
+                    return item && item.value === specialtyId;
                 });
                 let selectedClinic = listClinic.find((item) => {
-                    return item && item.value === specialtyId;
+                    return item && item.value === clinicId;
                 });
 
                 this.setState({
@@ -423,8 +426,14 @@ class ManageDoctor extends Component {
     };
 
     render() {
-        let { listPrice, listPayment, listProvince, selectedSpecialty } =
-            this.state;
+        let {
+            listPrice,
+            listPayment,
+            listProvince,
+            selectedSpecialty,
+            listSpecialty,
+            listClinic,
+        } = this.state;
         return (
             <div className="manage-doctor-container">
                 <LoadingOverlay
