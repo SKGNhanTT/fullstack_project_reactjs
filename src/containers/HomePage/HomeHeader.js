@@ -5,13 +5,14 @@ import './HomeHeader.scss';
 import { LANGUAGES } from '../../utils';
 import { changeLanguageApp } from '../../store/actions';
 import { withRouter } from 'react-router';
+import Slider from 'react-slick';
 
-import hospital from '../../assets/images/hospital.png';
-import health from '../../assets/images/health.png';
-import mobile from '../../assets/images/mobile.png';
-import note from '../../assets/images/note.png';
-import tooth from '../../assets/images/tooth.png';
-import smart from '../../assets/images/smart.png';
+import slider1 from '../../assets/images/slider/134537-group-12314.png';
+import slider2 from '../../assets/images/slider/141422-144204-dat-lich-kham-bookingcare-pharmacity.jpg';
+import slider3 from '../../assets/images/slider/141422-144204-dat-lich-kham-bookingcare-pharmacity.jpg';
+import healthFacilities1 from '../../assets/images/for-you/141017-csyt.png';
+import healthFacilities2 from '../../assets/images/for-you/140537-chuyen-khoa.png';
+import healthFacilities3 from '../../assets/images/for-you/140234-bac-si.png';
 
 class HomeHeader extends Component {
     changeLanguage = (language) => {
@@ -26,21 +27,35 @@ class HomeHeader extends Component {
         }
     };
 
+    handleDetailSpecialty = () => {
+        if (this.props.history) {
+            this.props.history.push(`/login`);
+        }
+    };
+
     render() {
         let language = this.props.language;
+        let settings = {
+            dots: true,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 4000,
+        };
+        let slider = [slider1, slider2, slider3];
         return (
             <React.Fragment>
                 <div className="home-header-container">
                     <div className="home-header-content">
                         <div className="left-content">
-                            <div className="menu-header">
-                                <i className="fa-solid fa-bars"></i>
-                            </div>
                             <div
                                 className="header-logo"
                                 onClick={() => this.returnToHome()}
                             >
-                                <svg
+                                <h1 className="logo-name">BookingHealthCare</h1>
+                                {/* <svg
                                     viewBox="0 0 666.63 146.21"
                                     preserveAspectRatio="none"
                                     width="100%"
@@ -59,7 +74,7 @@ class HomeHeader extends Component {
                                         d="M184.43 45.71a16.32 16.32 0 0 1 7.32 5 11.82 11.82 0 0 1 2.59 7.61 12.14 12.14 0 0 1-2.63 7.77 13.19 13.19 0 0 1-7.16 4.53 13.92 13.92 0 0 1 8.54 4.94 14.53 14.53 0 0 1 3.12 9.39 13.67 13.67 0 0 1-2.67 8.38 16.6 16.6 0 0 1-7.61 5.5 32.11 32.11 0 0 1-11.57 1.9h-28V44h26.94a32.23 32.23 0 0 1 11.13 1.71Zm-7.08 19.34a5.15 5.15 0 0 0 1.78-4.17 4.83 4.83 0 0 0-1.78-4 7.28 7.28 0 0 0-4.86-1.34h-11.33v11h11.33a7.31 7.31 0 0 0 4.86-1.48Zm1.3 22.54a5.25 5.25 0 0 0 2.27-4.53 4.93 4.93 0 0 0-2.27-4.25 10.22 10.22 0 0 0-6.15-1.5h-11.34v11.9h11.33a10.4 10.4 0 0 0 6.15-1.62ZM236.67 59.23a20.42 20.42 0 0 1 8.42 7.85 22.53 22.53 0 0 1 3 11.69 22.68 22.68 0 0 1-3 11.77 20.41 20.41 0 0 1-8.42 7.85 29.58 29.58 0 0 1-25.09 0 20.13 20.13 0 0 1-8.38-7.85 22.91 22.91 0 0 1-3-11.77 22.75 22.75 0 0 1 3-11.69 20.13 20.13 0 0 1 8.38-7.85 29.58 29.58 0 0 1 25.09 0Zm-19.34 11.85a11.57 11.57 0 0 0-2.59 7.85 11.69 11.69 0 0 0 2.59 7.93 8.55 8.55 0 0 0 6.8 3 8.64 8.64 0 0 0 6.88-3 11.7 11.7 0 0 0 2.59-7.93 11.47 11.47 0 0 0-2.6-7.85 8.68 8.68 0 0 0-6.84-3 8.56 8.56 0 0 0-6.83 3ZM287.81 59.23a20.42 20.42 0 0 1 8.42 7.85 22.53 22.53 0 0 1 3 11.69 22.68 22.68 0 0 1-3 11.77 20.41 20.41 0 0 1-8.42 7.85 29.58 29.58 0 0 1-25.09 0 20.13 20.13 0 0 1-8.38-7.85 22.91 22.91 0 0 1-3-11.77 22.75 22.75 0 0 1 3-11.69 20.13 20.13 0 0 1 8.38-7.85 29.58 29.58 0 0 1 25.09 0Zm-19.34 11.85a11.57 11.57 0 0 0-2.59 7.85 11.69 11.69 0 0 0 2.59 7.93 8.55 8.55 0 0 0 6.8 3 8.64 8.64 0 0 0 6.88-3 11.7 11.7 0 0 0 2.59-7.93 11.47 11.47 0 0 0-2.63-7.85 8.68 8.68 0 0 0-6.84-3 8.56 8.56 0 0 0-6.8 3ZM334.59 100.7l-9.22-16.51-4.45 4.61v11.9H306.5v-60h14.41v31.03l14-14.81h16.35l-16 16.91 16.35 26.87ZM369.34 38.92a7.5 7.5 0 0 1 2.15 5.54 7.53 7.53 0 0 1-2.15 5.5 7.92 7.92 0 0 1-10.92 0 7.53 7.53 0 0 1-2.15-5.5 7.5 7.5 0 0 1 2.15-5.54 8 8 0 0 1 10.92 0Zm-12.5 18h14.32v43.78h-14.32ZM422.11 60.89q4.33 4.53 4.33 12.22v27.6h-14.33V77.24a8.21 8.21 0 0 0-2-5.87 7.1 7.1 0 0 0-5.42-2.14 8.31 8.31 0 0 0-5.87 2.35 9.54 9.54 0 0 0-2.71 6v23.12h-14.4V56.92h14.4V64a15.56 15.56 0 0 1 6-5.74 17.85 17.85 0 0 1 8.46-1.94q7.21.04 11.54 4.57ZM477.66 56.92v39.9a19 19 0 0 1-3 10.64 19.42 19.42 0 0 1-8.37 7 29.52 29.52 0 0 1-12.42 2.54 36.57 36.57 0 0 1-10.6-1.54 33.6 33.6 0 0 1-9-4.13l5-10a25.78 25.78 0 0 0 6.47 3.16 22.62 22.62 0 0 0 7 1.13 12 12 0 0 0 7.69-2.27 7.46 7.46 0 0 0 2.83-6.15v-4.67q-4.37 5.75-12.46 5.75a17.56 17.56 0 0 1-16.23-10.08 24.55 24.55 0 0 1-2.39-11 24.29 24.29 0 0 1 2.31-10.84A17.28 17.28 0 0 1 441 59a17.85 17.85 0 0 1 9.55-2.59 17.42 17.42 0 0 1 7.32 1.5 14.29 14.29 0 0 1 5.46 4.33v-5.32Zm-16.75 28a10.92 10.92 0 0 0 2.43-7.36 11.05 11.05 0 0 0-2.43-7.45 8.64 8.64 0 0 0-12.83 0 11 11 0 0 0-2.47 7.4 10.8 10.8 0 0 0 2.47 7.36 8.13 8.13 0 0 0 6.43 2.83 8 8 0 0 0 6.4-2.78ZM522.17 57.69a15.69 15.69 0 0 0-7.53-2.06 14.72 14.72 0 0 0-7.81 2.15 15.19 15.19 0 0 0-5.54 5.91 18.35 18.35 0 0 0 0 16.75 15.18 15.18 0 0 0 5.54 5.91 14.71 14.71 0 0 0 7.81 2.15 17.18 17.18 0 0 0 7.28-1.78 23.06 23.06 0 0 0 6.8-4.86l8.66 9.31a34.62 34.62 0 0 1-11 7.73 30.45 30.45 0 0 1-27.8-1 28.38 28.38 0 0 1-10.68-10.6 29.51 29.51 0 0 1-3.88-15.05 28.28 28.28 0 0 1 14.85-25.33 32.25 32.25 0 0 1 28-1.17 30.92 30.92 0 0 1 10.44 7.16l-8.58 10.36a21.17 21.17 0 0 0-6.56-5.58ZM576.56 60.52q5 4.17 5.1 11.69v28.49h-14.17v-4.93q-4.37 5.58-13.19 5.58-7 0-11-3.76a13 13 0 0 1-4-9.91 11.76 11.76 0 0 1 4.36-9.68q4.33-3.48 12.42-3.56h11.41v-.49a5.84 5.84 0 0 0-2.14-4.86 9.79 9.79 0 0 0-6.19-1.7 25 25 0 0 0-6.19.89 36.81 36.81 0 0 0-6.97 2.56l-4-9.71a57 57 0 0 1 10.24-3.6 43.48 43.48 0 0 1 10.16-1.17q9.14 0 14.16 4.16ZM564.42 90a6.84 6.84 0 0 0 3.08-4.09v-3.8h-8.58q-6.07 0-6.07 4.53a4.47 4.47 0 0 0 1.58 3.6 6.49 6.49 0 0 0 4.33 1.34 10.16 10.16 0 0 0 5.66-1.58ZM611.15 58.38a16.49 16.49 0 0 1 8.21-2v13.17a21.73 21.73 0 0 0-2.18-.08 13.32 13.32 0 0 0-8.25 2.39 9.15 9.15 0 0 0-3.64 6.51v22.33h-14.4V56.92h14.4v7.28a15.77 15.77 0 0 1 5.86-5.82ZM660.88 62.75q5.74 6.31 5.75 17.32 0 1.7-.08 2.59h-30.43a10.51 10.51 0 0 0 3.64 5.71 10.07 10.07 0 0 0 6.31 2 13.66 13.66 0 0 0 5.46-1.13 15.43 15.43 0 0 0 4.82-3.32l7.53 7.53a22.19 22.19 0 0 1-8.21 5.79 28.33 28.33 0 0 1-10.88 2 26.18 26.18 0 0 1-12.3-2.75 19.12 19.12 0 0 1-8.05-7.77A23.57 23.57 0 0 1 621.63 79a24.16 24.16 0 0 1 2.83-11.86 19.56 19.56 0 0 1 8-7.93 24.85 24.85 0 0 1 12-2.79q10.67.02 16.42 6.33ZM652.63 75a8.43 8.43 0 0 0-2.23-6.11 8.46 8.46 0 0 0-11.57 0 11.27 11.27 0 0 0-3 6.15Z"
                                         className="bookingcare-2020_svg__cls-2"
                                     ></path>
-                                </svg>
+                                </svg> */}
                             </div>
                         </div>
                         <div className="center-content">
@@ -93,21 +108,14 @@ class HomeHeader extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="child-content">
-                                <div>
-                                    <b>
-                                        <FormattedMessage id="homeheader.fee" />
-                                    </b>
-                                    <div className="sub-title">
-                                        <FormattedMessage id="homeheader.check-health" />
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                         <div className="right-content">
-                            <div className="support">
-                                <i className="fa-solid fa-circle-question"></i>
-                                <FormattedMessage id="homeheader.support" />
+                            <div
+                                className="login"
+                                onClick={() => this.handleDetailSpecialty()}
+                            >
+                                <i className="fa-solid fa-right-to-bracket"></i>
+                                <FormattedMessage id="homeheader.login" />
                             </div>
                             <div
                                 className={
@@ -143,7 +151,7 @@ class HomeHeader extends Component {
                     </div>
                 </div>
 
-                {this.props.isShowBanner && (
+                {/* {this.props.isShowBanner && (
                     <div className="home-header-banner">
                         <div className="content-up">
                             <div className="title1">
@@ -156,12 +164,17 @@ class HomeHeader extends Component {
                                 <i className="fa-solid fa-magnifying-glass"></i>
                                 <input
                                     type="text"
-                                    placeholder="Tìm chuyên khoa khám bệnh"
+                                    placeholder={
+                                        language === LANGUAGES.VI
+                                            ? 'Tìm kiếm bác sĩ, chuyên khoa, bệnh viện...'
+                                            : 'Search doctor, specialty, hospital...'
+                                    }
                                 />
                             </div>
                         </div>
-                        <div className="content-down">
-                            <div className="option">
+                        <div className="content-down"> */}
+
+                {/* <div className="option">
                                 <div className="option-child">
                                     <div className="icon-child">
                                         <img className="img" src={hospital} />
@@ -208,6 +221,73 @@ class HomeHeader extends Component {
                                     </div>
                                     <div className="text-child">
                                         <FormattedMessage id="banner.child6" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )} */}
+
+                {this.props.isShowBanner && (
+                    <div className="slider-homepage-container">
+                        <div className="slider-homepage">
+                            <Slider {...settings}>
+                                {slider &&
+                                    slider.length > 0 &&
+                                    slider.map((item, index) => {
+                                        return (
+                                            <div
+                                                className="slider-item"
+                                                key={index}
+                                            >
+                                                <img
+                                                    src={item}
+                                                    alt="slider"
+                                                    width="100%"
+                                                    height="450px"
+                                                />
+                                            </div>
+                                        );
+                                    })}
+                            </Slider>
+                        </div>
+                        <div className="for-you">
+                            <span className="content-title">
+                                {' '}
+                                <FormattedMessage id="banner.recommended" />
+                            </span>
+                            <div className="option">
+                                <div className="option-child">
+                                    <div className="icon-child">
+                                        <img
+                                            className="img"
+                                            src={healthFacilities1}
+                                        />
+                                    </div>
+                                    <div className="text-child">
+                                        <FormattedMessage id="banner.text-child1" />
+                                    </div>
+                                </div>
+                                <div className="option-child">
+                                    <div className="icon-child">
+                                        <img
+                                            className="img"
+                                            src={healthFacilities2}
+                                        />
+                                    </div>
+                                    <div className="text-child">
+                                        <FormattedMessage id="banner.text-child2" />
+                                    </div>
+                                </div>
+                                <div className="option-child">
+                                    <div className="icon-child">
+                                        <img
+                                            className="img"
+                                            src={healthFacilities3}
+                                        />
+                                    </div>
+                                    <div className="text-child">
+                                        <FormattedMessage id="banner.text-child3" />
                                     </div>
                                 </div>
                             </div>

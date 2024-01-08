@@ -14,6 +14,7 @@ import {
 import _ from 'lodash';
 import HomeFooter from '../../HomePage/HomeFooter';
 import LoadingOverlay from 'react-loading-overlay';
+import { withRouter } from 'react-router-dom';
 
 class DetailSpecialty extends Component {
     constructor(props) {
@@ -23,6 +24,7 @@ class DetailSpecialty extends Component {
             dataDetailSpecialty: {},
             listProvince: [],
             isLoadingOverlay: true,
+            isShowDetail: false,
         };
     }
 
@@ -105,8 +107,20 @@ class DetailSpecialty extends Component {
             }
         }
     };
+
+    handleShowDetail = () => {
+        this.setState({
+            isShowDetail: !this.state.isShowDetail,
+        });
+    };
+
+    handleIconBack = () => {
+        this.props.history.push('/home');
+    };
+
     render() {
-        let { arrDoctorId, dataDetailSpecialty, listProvince } = this.state;
+        let { arrDoctorId, dataDetailSpecialty, listProvince, isShowDetail } =
+            this.state;
         let { language } = this.props;
 
         return (
@@ -117,16 +131,45 @@ class DetailSpecialty extends Component {
                     text="Loading..."
                 >
                     <HomeHeader />
+                    {!_.isEmpty(dataDetailSpecialty) && (
+                        <div className="des-specialty">
+                            <i
+                                className="fa-solid fa-house"
+                                onClick={() => this.handleIconBack()}
+                            ></i>{' '}
+                            / {dataDetailSpecialty.name}
+                        </div>
+                    )}
                     <div className="detail-specialty-body">
                         {!_.isEmpty(dataDetailSpecialty) && (
                             <div className="description-specialty">
                                 {dataDetailSpecialty &&
                                     !_.isEmpty(dataDetailSpecialty) && (
                                         <div
+                                            style={{
+                                                maxHeight: !isShowDetail
+                                                    ? '200px'
+                                                    : '100%',
+                                            }}
                                             dangerouslySetInnerHTML={{
                                                 __html: dataDetailSpecialty.descriptionHTML,
                                             }}
                                         ></div>
+                                    )}
+                            </div>
+                        )}
+                        {!_.isEmpty(dataDetailSpecialty) && (
+                            <div className="description-specialty">
+                                {dataDetailSpecialty &&
+                                    !_.isEmpty(dataDetailSpecialty) && (
+                                        <span
+                                            className="view-detail"
+                                            onClick={() =>
+                                                this.handleShowDetail()
+                                            }
+                                        >
+                                            Xem chi tiết
+                                        </span>
                                     )}
                             </div>
                         )}
@@ -223,4 +266,6 @@ const mapDispatchToProps = (dispatch) => {
     return {};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DetailSpecialty);
+export default withRouter(
+    connect(mapStateToProps, mapDispatchToProps)(DetailSpecialty)
+);

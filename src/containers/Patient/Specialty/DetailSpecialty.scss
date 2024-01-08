@@ -8,6 +8,20 @@
             font-size: 16px;
             font-weight: 600;
         }
+        overflow-y: hidden;
+        .view-detail {
+            color: #337ab7;
+            cursor: pointer;
+            text-decoration: underline;
+            padding: 10px 10px 20px 10px !important;
+        }
+    }
+    .des-specialty {
+        padding: 15px 100px 0 100px;
+        color: #337ab7;
+        .fa-house {
+            cursor: pointer;
+        }
     }
 
     .detail-specialty-body {

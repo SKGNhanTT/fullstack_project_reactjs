@@ -10,10 +10,12 @@
         border-radius: 50%;
         margin: 10px 20px;
         background-size: cover;
+        box-sizing: border-box;
+        padding-right: 150px;
     }
 
     .content-right {
-        padding-left: 10px;
+        // margin-left: 50px;
         width: 80%;
         display: flex;
         flex-direction: column;
@@ -31,6 +33,9 @@
 }
 .price {
     .view-detail-doctor {
-        margin-left: 40px;
+        margin-left: 60px;
+        a {
+            color: #337ab7 !important;
+        }
     }
 }

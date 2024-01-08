@@ -6,6 +6,7 @@
     border: 1px solid rgb(181, 231, 237) !important;
     border-radius: 10px !important;
     background: #fff !important;
+
     &:hover {
         opacity: 0.8;
     }
@@ -19,6 +20,7 @@
     border: 1px solid rgb(181, 231, 237) !important;
     border-radius: 10px !important;
     background: #fff !important;
+    display: block !important;
     &:hover {
         opacity: 0.8;
     }
@@ -114,7 +116,7 @@
     height: 400px;
 
     .section-container {
-        margin: 0 120px;
+        margin: 0 100px;
         display: flex;
         flex-direction: column;
 

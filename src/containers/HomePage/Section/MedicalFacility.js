@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Slider from 'react-slick';
 import { getAllClinic } from '../../../services/userService';
 import { withRouter } from 'react-router';
+import { FormattedMessage } from 'react-intl';
 
 class MedicalFacility extends Component {
     constructor(props) {
@@ -34,9 +35,11 @@ class MedicalFacility extends Component {
                     <div className="section-container">
                         <div className="section-header">
                             <span className="title-section">
-                                Cơ sở y tế nổi bật
+                                <FormattedMessage id="homepage.medical-facilities" />
                             </span>
-                            <button className="btn-section">Xem thêm</button>
+                            <button className="btn-section">
+                                <FormattedMessage id="homepage.more-info" />
+                            </button>
                         </div>
 
                         <div className="section-body">
@@ -45,7 +48,10 @@ class MedicalFacility extends Component {
                                     dataClinic.length > 0 &&
                                     dataClinic.map((item) => {
                                         return (
-                                            <div className="section-customize">
+                                            <div
+                                                className="section-customize"
+                                                key={item.id}
+                                            >
                                                 <div
                                                     className="bg-img section-medical-facility"
                                                     style={{

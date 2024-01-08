@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { FormattedMessage } from 'react-intl';
 
 class About extends React.Component {
     render() {
         return (
             <div className="section-share section-about">
-                <div className="section-about-header">Thông tin Covid-19</div>
+                <div className="section-about-header">
+                    <FormattedMessage id="about.infor" />
+                </div>
                 <div className="container">
                     <div className="section-about-content">
                         <div className="section-left">
@@ -21,18 +24,7 @@ class About extends React.Component {
                         </div>
                         <div className="section-right">
                             <p>
-                                What do you know about the coronavirus disease
-                                (COVID-19) that is causing a health emergency?
-                                Coronaviruses (CoV) are a large family of
-                                viruses that cause illness ranging from the
-                                common cold to more severe diseases such as
-                                Middle East Respiratory Syndrome (MERS-CoV) and
-                                Severe Acute Respiratory Syndrome (SARS-CoV).
-                                COVID-19 is caused by a coronavirus that has not
-                                been previously identified in humans
-                                (SARS-CoV-2). To find out more, watch this short
-                                video which was revised on 15 June 2020 to
-                                reflect the evolving context.{' '}
+                                <FormattedMessage id="about.infor-text" />
                             </p>
                         </div>
                     </div>

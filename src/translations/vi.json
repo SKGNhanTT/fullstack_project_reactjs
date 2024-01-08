@@ -8,18 +8,22 @@
         "select-doctor": "Chọn bác sĩ giỏi",
         "fee": "Gói khám",
         "check-health": "Khám sức khỏe tổng quát",
-        "support": "Hỗ trợ",
+        "login": "Đăng nhập",
         "welcome": "Xin chào, "
     },
     "banner": {
         "title1": "Nền tảng y tế",
         "title2": "Chăm sóc sức khỏe toàn diện",
-        "child1": "Khám chuyên khoa",
+        "child1": "Cơ sở y tế",
         "child2": "Khám Tổng quát",
         "child3": "Khám tổng quát",
         "child4": "Xét nghiệm y học",
         "child5": "Sức khỏe tinh thần",
-        "child6": "Khám nha khoa"
+        "child6": "Khám nha khoa",
+        "text-child1": "Cơ sở y tế",
+        "text-child2": "Chuyên khoa",
+        "text-child3": "Bác sĩ",
+        "recommended": "Dành cho bạn"
     },
     "menu": {
         "admin": {
@@ -56,9 +60,10 @@
         "edit": "Lưu thay đổi"
     },
     "homepage": {
-        "outstanding-doctor": "Bác sĩ nổi bật tuần qua",
-        "more-info": "Xem thêm",
-        "specialty": "Chuyên khoa phổ biến"
+        "outstanding-doctor": "Bác Sĩ Nổi Bật Tuần Qua",
+        "more-info": "Xem Thêm",
+        "specialty": "Chuyên Khoa Phổ Biến",
+        "medical-facilities": "Cơ Sở Y Tế Nổi Bật"
     },
 
     "manage-schedule": {
@@ -117,5 +122,36 @@
             "markdown-en": "Thông tin chi tiết bằng Tiếng Anh",
             "markdown-vi": "Thông tin chi tiết bằng Tiếng Việt"
         }
+    },
+    "about": {
+        "infor": "Thông tin Covid-19",
+        "infor-text": "Bạn biết gì về căn bệnh do vi-rút Corona (Covid-19) đang gây ra tình trạng khẩn cấp về sức khỏe? Vi rút Corona (CoV) là một họ vi rút lớn gây bệnh từ cảm lạnh thông thường đến các bệnh nghiêm trọng hơn như Hội chứng hô hấp Trung Đông (MERS-CoV) và Hội chứng hô hấp cấp tính nặng (SARS-CoV). COVID-19 là do một loại vi-rút Corona chưa được xác định trước đây ở người (SARS-CoV-2). Để tìm hiểu thêm, hãy xem video ngắn này đã được sửa đổi vào ngày 15 tháng 6 năm 2020 để phản ánh bối cảnh đang phát triển."
+    },
+    "footer": {
+        "about-us": "Công ty Cổ phần Booking Health Care",
+        "address1": "Lô B4/D290, Khu đô thị mới Cầu Giấy, Phường Dịch Vọng Hậu, Quận Cầu Giấy, Thành phố Hà Nội, Việt Nam",
+        "phone": "024-7301-9999 (7h30 - 18h)",
+        "email": "support@bookinghealthcare.vn (7h30 - 18h)",
+        "HCM": "Văn phòng Hồ Chí Minh",
+        "address2": "Tầng 3, Tòa nhà H3, Số 384 Hoàng Diệu, Phường 6, Quận 4, Thành phố Hồ Chí Minh, Việt Nam",
+
+        "info": "Thông tin",
+        "recruitment": "Tuyển dụng",
+        "polocy": "Chính sách bảo mật",
+        "regulation": "Quy chế hoạt động",
+        "contact": "Liên hệ hợp tác",
+        "terns-of-use": "Điều khoản sử dụng",
+        "faq": "Giải đáp thắc mắc",
+
+        "sponsor": "Đối tác bảo trợ nội dung",
+        "hello-doctor": "Hello Doctor",
+        "hello-doctor-text": "Bảo trợ chuyên mục nội dung \"Sức khỏe tinh thần\"",
+        "bernard": "Hệ thống y khoa chuyên sâu quốc tế Bernard",
+        "bernard-text": "Bảo trợ chuyên mục nội dung \"y khoa chuyên sâu\"",
+        "doctor-check": "Doctor Check - Tầm Soát Bệnh Để Sống Thọ Hơn",
+        "doctor-check-text": "Bảo trợ chuyên mục nội dung \"Sức khỏe tổng quát\"",
+
+        "download": " Tải ứng dụng Booking Health Care cho điện thoại hoặc máy tính bảng:",
+        "download-script": " Android - iPhone/iPad - Khác"
     }
 }

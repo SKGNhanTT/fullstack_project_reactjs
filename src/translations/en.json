@@ -8,18 +8,22 @@
         "select-doctor": "Choose a good doctor",
         "fee": "Examination package",
         "check-health": "General health check",
-        "support": "Support",
+        "login": "Login",
         "welcome": "Welcome, "
     },
     "banner": {
         "title1": "Medical PlatForm",
         "title2": "Comerehensive Health Care",
-        "child1": "Speciallize Examination",
+        "child1": "Health facilities",
         "child2": "Remote Examination",
         "child3": "General Examination",
         "child4": "Medical Test",
         "child5": "Mental Heath",
-        "child6": "Dental Examination"
+        "child6": "Dental Examination",
+        "text-child1": "Hospital",
+        "text-child2": "Specialties",
+        "text-child3": "Doctor",
+        "recommended": "Recommended"
     },
     "menu": {
         "admin": {
@@ -56,9 +60,10 @@
         "edit": "Save change"
     },
     "homepage": {
-        "outstanding-doctor": "Last week's featured doctor",
-        "more-info": "More info",
-        "specialty": "Popular specialties"
+        "outstanding-doctor": "Last Week's Featured Doctor",
+        "more-info": "More Info",
+        "specialty": "Popular Specialties",
+        "medical-facilities": "Outstanding Medical Facilities"
     },
     "manage-schedule": {
         "title": "Manage doctor's schedule",
@@ -96,6 +101,10 @@
             "see-more": "See more"
         }
     },
+    "about": {
+        "infor": "Covid-19 information",
+        "infor-text": "What do you know about the coronavirus disease (COVID-19) that is causing a health emergency? Coronaviruses (CoV) are a large family of viruses that cause illness ranging from the common cold to more severe diseases such as Middle East Respiratory Syndrome (MERS-CoV) and Severe Acute Respiratory Syndrome (SARS-CoV). COVID-19 is caused by a coronavirus that has not been previously identified in humans (SARS-CoV-2). To find out more, watch this short video which was revised on 15 June 2020 to reflect the evolving context."
+    },
     "admin": {
         "manage-doctor": {
             "title": "ADD DOCTOR'S INFORMATION",
@@ -116,5 +125,32 @@
             "markdown-en": "Detailed information in English",
             "markdown-vi": "Detailed information in Vietnamese"
         }
+    },
+    "footer": {
+        "about-us": "Booking Health Care Joint Stock Company",
+        "address1": "Lot B4/D290, Cau Giay New Urban Area, Dich Vong Hau Ward, Cau Giay District, Hanoi City, Vietnam",
+        "phone": "024-7301-9999 (7:30 - 18:00)",
+        "email": "support@bookinghealthcare.vn (7h:30- 18:00)",
+        "HCM": "Ho Chi Minh Office",
+        "address2": "3rd Floor, Building H3, No. 384 Hoang Dieu, Ward 6, District 4, Ho Chi Minh City, Vietnam",
+
+        "info": "Information",
+        "recruitment": "Recruitment",
+        "polocy": "Privacy Policy",
+        "regulation": "Operating regulations",
+        "contact": "Contact for cooperation",
+        "terns-of-use": "Terms of use",
+        "faq": "Troubleshooting",
+
+        "sponsor": "Content Sponsorship Partner",
+        "hello-doctor": "Hello Doctor",
+        "hello-doctor-text": "Sponsor the content section \"Mental Health\"",
+        "bernard": "Bernard International Intensive Medical System",
+        "bernard-text": "Sponsor the content section \"specialized medicine\"",
+        "doctor-check": "Doctor Check - Screening for Diseases to Live Longer",
+        "doctor-check-text": "Sponsor the content section \"General Health\"",
+
+        "download": "Download the Booking Health Care app for your phone or tablet:",
+        "download-script": " Android - iPhone/iPad - Other"
     }
 }

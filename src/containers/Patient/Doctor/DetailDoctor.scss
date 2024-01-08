@@ -1,7 +1,19 @@
 .doctor-detail-container {
     height: 500px;
     background-image: url('../../../assets/images/background/background_child.png');
-
+    .des-doctor {
+        padding: 15px 100px 5px 100px;
+        color: #337ab7;
+        .fa-house {
+            cursor: pointer;
+        }
+        .des-specialty {
+            cursor: pointer;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
     .intro-contor {
         display: flex;
         margin: 0 100px;
@@ -9,7 +21,7 @@
         .content-left {
             background: center center no-repeat;
             width: 140px;
-            height: 140px;
+            height: 150px;
             overflow: hidden;
             border-radius: 50%;
             margin: 10px 20px;

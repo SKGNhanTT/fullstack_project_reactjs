@@ -147,7 +147,7 @@ class BookingModal extends Component {
                 date = moment
                     .unix(+dataTime.date / 1000)
                     .locale('en')
-                    .format('ddd - MM/DD/YYYY');
+                    .format('ddd - YYYY/MM/DD');
             }
 
             return `${time} - ${date}`;

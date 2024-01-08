@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './HomeFooter.scss';
+import { FormattedMessage } from 'react-intl';
 import HelloDoctor from '../../assets/images/footer/093706-hellodoctorlogo.png';
 import Bernard from '../../assets/images/footer/082316-logo-bernard.png';
 import DoctorCheck from '../../assets/images/footer/110954-doctor-check.png';
@@ -8,52 +9,70 @@ import DoctorCheck from '../../assets/images/footer/110954-doctor-check.png';
 class HomeFooter extends React.Component {
     render() {
         return (
-            <footer class="footer">
-                <div class="container">
-                    <div class="footer-top">
-                        <div class="footer-left">
-                            <h6>Công ty Cổ phần Booking Health Care</h6>
+            <footer className="footer">
+                <div className="container">
+                    <div className="footer-top">
+                        <div className="footer-left">
+                            <h6>
+                                <FormattedMessage id="footer.about-us" />
+                            </h6>
                             <div>
                                 <p>
-                                    <i className="fa-solid fa-location-dot"></i>{' '}
-                                    Lô B4/D21, Khu đô thị mới Cầu Giấy, Phường
-                                    Dịch Vọng Hậu, Quận Cầu Giấy, Thành phố Hà
-                                    Nội, Việt Nam
+                                    <FormattedMessage id="footer.address1" />
                                 </p>
 
                                 <p>
                                     <i className="fa-solid fa-phone"></i>{' '}
-                                    024-7301-2468 (7h30 - 18h)
+                                    <FormattedMessage id="footer.phone" />
                                 </p>
                                 <p>
                                     <i className="fa-solid fa-envelope"></i>{' '}
-                                    support@bookinghealthcare.vn (7h30 - 18h)
+                                    <FormattedMessage id="footer.email" />
                                 </p>
                             </div>
-                            <h6>Văn phòng Hồ Chí Minh</h6>
+                            <h6>
+                                <FormattedMessage id="footer.HCM" />
+                            </h6>
                             <p>
                                 <i className="fa-solid fa-location-dot"></i> Số
-                                01, Hồ Bá Kiện, Phường 15, Quận 10
+                                <FormattedMessage id="footer.address2" />
                             </p>
                         </div>
-                        <div class="footer-center">
-                            <h6>Thông tin</h6>
-                            <p>Tuyển dụng</p>
-                            <p>Chính sách bảo mật</p>
-                            <p>Quy chế hoạt động</p>
-                            <p>Liên hệ hợp tác</p>
-                            <p>Điều khoản sử dụng</p>
-                            <p>Giải đáp thắc mắc</p>
+                        <div className="footer-center">
+                            <h6>
+                                <FormattedMessage id="footer.info" />
+                            </h6>
+                            <p>
+                                <FormattedMessage id="footer.recruitment" />
+                            </p>
+                            <p>
+                                <FormattedMessage id="footer.polocy" />
+                            </p>
+                            <p>
+                                <FormattedMessage id="footer.regulation" />
+                            </p>
+                            <p>
+                                <FormattedMessage id="footer.contact" />
+                            </p>
+                            <p>
+                                <FormattedMessage id="footer.terns-of-use" />
+                            </p>
+                            <p>
+                                <FormattedMessage id="footer.faq" />
+                            </p>
                         </div>
-                        <div class="footer-right">
-                            <h6>Đối tác bảo trợ nội dung</h6>
+                        <div className="footer-right">
+                            <h6>
+                                <FormattedMessage id="footer.sponsor" />
+                            </h6>
                             <div className="right-item">
                                 <img src={HelloDoctor} alt="Description" />
                                 <div>
-                                    <h6>Hello Doctor</h6>
+                                    <h6>
+                                        <FormattedMessage id="footer.hello-doctor" />
+                                    </h6>
                                     <p>
-                                        Bảo trợ chuyên mục nội dung "Sức khỏe
-                                        tinh thần"
+                                        <FormattedMessage id="footer.hello-doctor-text" />
                                     </p>
                                 </div>
                             </div>
@@ -61,12 +80,10 @@ class HomeFooter extends React.Component {
                                 <img src={Bernard} alt="Description" />
                                 <div>
                                     <h6>
-                                        Hệ thống y khoa chuyên sâu quốc tế
-                                        Bernard
+                                        <FormattedMessage id="footer.bernard" />
                                     </h6>
                                     <p>
-                                        Bảo trợ chuyên mục nội dung "y khoa
-                                        chuyên sâu"
+                                        <FormattedMessage id="footer.bernard-text" />
                                     </p>
                                 </div>
                             </div>
@@ -74,12 +91,10 @@ class HomeFooter extends React.Component {
                                 <img src={DoctorCheck} alt="Description" />
                                 <div>
                                     <h6>
-                                        Doctor Check - Tầm Soát Bệnh Để Sống Thọ
-                                        Hơn
+                                        <FormattedMessage id="footer.doctor-check" />
                                     </h6>
                                     <p>
-                                        Bảo trợ chuyên mục nội dung "Sức khỏe
-                                        tổng quát"
+                                        <FormattedMessage id="footer.doctor-check-text" />
                                     </p>
                                 </div>
                             </div>
@@ -87,17 +102,16 @@ class HomeFooter extends React.Component {
                     </div>
                     <hr />
                     <p>
-                        <i className="fa-solid fa-mobile-screen-button"></i> Tải
-                        ứng dụng Booking Health Care cho điện thoại hoặc máy
-                        tính bảng:{' '}
+                        <i className="fa-solid fa-mobile-screen-button"></i>{' '}
+                        <FormattedMessage id="footer.download" />
                         <span className="download-app-text">
-                            Android - iPhone/iPad - Khác
+                            <FormattedMessage id="footer.download-script" />
                         </span>
                     </p>
                 </div>
                 <div className="bottom-background">
                     <div className="container">
-                        <div class="footer-bottom">
+                        <div className="footer-bottom">
                             <div>
                                 <p>
                                     &copy; 2023 BookingHealthCare.com. All
@@ -148,7 +162,7 @@ class HomeFooter extends React.Component {
                                     viewBox="0 0 250 250"
                                     preserveAspectRatio="none"
                                 >
-                                    <g fill-rule="evenodd" clip-rule="evenodd">
+                                    <g fillRule="evenodd" clipRule="evenodd">
                                         <path
                                             fill="#010101"
                                             d="M25 0h200c13.808 0 25 11.192 25 25v200c0 13.808-11.192 25-25 25H25c-13.808 0-25-11.192-25-25V25C0 11.192 11.192 0 25 0"

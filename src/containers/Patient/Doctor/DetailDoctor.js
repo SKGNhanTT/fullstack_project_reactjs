@@ -2,13 +2,17 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import HomeHeader from '../../HomePage/HomeHeader';
 import './DetailDoctor.scss';
-import { getDetailInfoDoctor } from '../../../services/userService';
+import {
+    getDetailInfoDoctor,
+    getAllSpecialty,
+} from '../../../services/userService';
 import { LANGUAGES } from '../../../utils';
 import DoctorSchedule from './DoctorSchedule';
 import DoctorExtraInfor from './DoctorExtraInfor';
 import HomeFooter from '../../HomePage/HomeFooter';
 import LoadingOverlay from 'react-loading-overlay';
 import _ from 'lodash';
+import { withRouter } from 'react-router-dom';
 
 class DetailDoctor extends Component {
     constructor(props) {
@@ -16,6 +20,7 @@ class DetailDoctor extends Component {
         this.state = {
             detailDoctor: [],
             isLoadingOverlay: true,
+            nameSpecilaty: '',
         };
     }
 
@@ -40,10 +45,38 @@ class DetailDoctor extends Component {
         }
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {}
+    async componentDidUpdate(prevProps, prevState, snapshot) {
+        if (
+            prevState.detailDoctor.Doctor_Infor !==
+            this.state.detailDoctor.Doctor_Infor
+        ) {
+            let res = await getAllSpecialty();
+            let name = '';
+            if (res.data && res.data.length > 0) {
+                res.data.map((item) => {
+                    if (
+                        item.id ===
+                        this.state.detailDoctor.Doctor_Infor.specialtyId
+                    ) {
+                        name = item.name;
+                    }
+                    return name;
+                });
+            }
+            this.setState({
+                nameSpecilaty: name,
+            });
+        }
+    }
+    handleIconBack = () => {
+        this.props.history.push('/home');
+    };
+    handleBackSpecialty = (id) => {
+        this.props.history.push(`/detail-specialty/${id}`);
+    };
 
     render() {
-        let { detailDoctor } = this.state;
+        let { detailDoctor, nameSpecilaty } = this.state;
         let { language } = this.props;
         let nameVi, nameEN;
         if (detailDoctor && detailDoctor.positionData) {
@@ -59,6 +92,29 @@ class DetailDoctor extends Component {
                 <Fragment>
                     <HomeHeader isShowBanner={false} />
                     <div className="doctor-detail-container">
+                        {!_.isEmpty(nameSpecilaty) && (
+                            <div className="des-doctor">
+                                <i
+                                    className="fa-solid fa-house"
+                                    onClick={() => this.handleIconBack()}
+                                ></i>{' '}
+                                /{' '}
+                                {nameSpecilaty && (
+                                    <span
+                                        className="des-specialty"
+                                        onClick={() =>
+                                            this.handleBackSpecialty(
+                                                this.state.detailDoctor
+                                                    .Doctor_Infor.specialtyId
+                                            )
+                                        }
+                                    >
+                                        {nameSpecilaty}
+                                    </span>
+                                )}{' '}
+                                / {language === LANGUAGES.VI ? nameVi : nameEN}
+                            </div>
+                        )}
                         <div className="intro-contor">
                             <div
                                 className="content-left"
@@ -100,26 +156,28 @@ class DetailDoctor extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="schedule-doctor">
-                            <div className="content-left">
-                                <DoctorSchedule
-                                    detailDoctor={
-                                        detailDoctor && detailDoctor.id
-                                            ? detailDoctor.id
-                                            : -1
-                                    }
-                                />
+                        {!_.isEmpty(detailDoctor) && (
+                            <div className="schedule-doctor">
+                                <div className="content-left">
+                                    <DoctorSchedule
+                                        detailDoctor={
+                                            detailDoctor && detailDoctor.id
+                                                ? detailDoctor.id
+                                                : -1
+                                        }
+                                    />
+                                </div>
+                                <div className="content-right">
+                                    <DoctorExtraInfor
+                                        detailDoctor={
+                                            detailDoctor && detailDoctor.id
+                                                ? detailDoctor.id
+                                                : -1
+                                        }
+                                    />
+                                </div>
                             </div>
-                            <div className="content-right">
-                                <DoctorExtraInfor
-                                    detailDoctor={
-                                        detailDoctor && detailDoctor.id
-                                            ? detailDoctor.id
-                                            : -1
-                                    }
-                                />
-                            </div>
-                        </div>
+                        )}
                         {detailDoctor &&
                             detailDoctor.Markdown &&
                             detailDoctor.Markdown.contentHTMLVi &&
@@ -167,4 +225,6 @@ const mapDispatchToProps = (dispatch) => {
     return {};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DetailDoctor);
+export default withRouter(
+    connect(mapStateToProps, mapDispatchToProps)(DetailDoctor)
+);

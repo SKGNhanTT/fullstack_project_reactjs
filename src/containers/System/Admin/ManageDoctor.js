@@ -257,6 +257,11 @@ class ManageDoctor extends Component {
                 this.state.selectedSpecialty.value
                     ? this.state.selectedSpecialty.value
                     : '',
+            specialtyName:
+                this.state.selectedSpecialty &&
+                this.state.selectedSpecialty.label
+                    ? this.state.selectedSpecialty.label
+                    : '',
         });
 
         this.setState({
@@ -418,7 +423,8 @@ class ManageDoctor extends Component {
     };
 
     render() {
-        let { listPrice, listPayment, listProvince } = this.state;
+        let { listPrice, listPayment, listProvince, selectedSpecialty } =
+            this.state;
         return (
             <div className="manage-doctor-container">
                 <LoadingOverlay

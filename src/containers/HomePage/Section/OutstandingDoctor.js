@@ -34,6 +34,7 @@ class OutstandingDoctor extends Component {
 
     render() {
         let allDoctor = this.state.arrDoctor;
+        console.log('allDoctor', allDoctor);
         let { language } = this.props;
         let settings = {
             dots: false,
@@ -98,9 +99,12 @@ class OutstandingDoctor extends Component {
                                                                 ? nameVi
                                                                 : nameEN}
                                                         </h6>
-                                                        <div>
-                                                            Khoa sương khớp
-                                                        </div>
+                                                        <span>
+                                                            {
+                                                                item.Markdown
+                                                                    .specialtyName
+                                                            }
+                                                        </span>
                                                     </div>
                                                 </div>
                                             </div>
