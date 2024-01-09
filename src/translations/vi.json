@@ -31,7 +31,7 @@
             "manage-doctor": "Quản lý bác sĩ",
             "manage-admin": "Quản lý admin",
             "crud": "CRUD user",
-            "crud-redux": "CRUD redux",
+            "crud-redux": "Tạo người dùng",
             "manage-clinic": "Quản lí phòng khám",
             "clinic": "Phòng khám",
             "specialty": "Chuyên Khoa",
@@ -77,7 +77,10 @@
             "schedule": "Lịch Khám",
             "no-schedule": "Bác sĩ không có lịch hẹn trong thời gian này, Vui lòng chọn thời gian khác!",
             "choose": "Chọn",
-            "book-free": "và đặt (miễn phí)"
+            "book-free": "và đặt (miễn phí)",
+            "hidden": "Ẩn",
+            "show": "Xem thêm",
+            "no-doctor": "Hiện không có bác sĩ nào ở tỉnh này. Vui lòng chọn tỉnh khác!"
         },
         "extra-infor-doctor": {
             "text-address": "ĐỊA CHỈ KHÁM",
@@ -100,6 +103,14 @@
             "priceBooking": "Miễn phí đặt lịch",
             "price": "Giá khám: ",
             "see-more": "Xem thêm"
+        },
+        "all-specialty": {
+            "all-specialty": "Tất cả chuyên khoa",
+            "list-specialty": "Danh sách chuyên khoa",
+            "all-doctor": "Tất cả bác sĩ",
+            "list-doctor": "Danh sách bác sĩ",
+            "all-clinic": "Tất cả phòng khám",
+            "list-clinic": "Danh sách phòng khám"
         }
     },
     "admin": {

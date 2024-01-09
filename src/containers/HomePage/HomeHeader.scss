@@ -39,6 +39,10 @@
             .child-content {
                 font-weight: 400;
                 font-size: 14px;
+                cursor: pointer;
+                &:hover {
+                    color: #49bce2;
+                }
             }
         }
         .right-content {
@@ -49,7 +53,7 @@
             align-items: center;
 
             .login {
-                padding-right: 70px;
+                margin-right: 70px;
                 cursor: pointer;
                 i {
                     font-size: 15px;
@@ -119,6 +123,7 @@
             margin-top: 20px;
             display: flex;
             gap: 50px;
+
             .text-child {
                 margin-top: 10px;
                 text-align: center;
@@ -126,6 +131,7 @@
                 font-weight: 600;
                 &:hover {
                     cursor: pointer;
+                    color: #49bce2;
                 }
             }
             .option-child {

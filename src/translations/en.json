@@ -31,7 +31,7 @@
             "manage-doctor": "Manage Doctor",
             "manage-admin": "Manage Admin",
             "crud": "CRUD User",
-            "crud-redux": "CRUD Redux",
+            "crud-redux": "Create User",
             "manage-clinic": "Manage Clinic",
             "clinic": "Clinic",
             "specialty": "Specialties",
@@ -76,7 +76,10 @@
             "schedule": "Schedule",
             "no-schedule": "Doctor does not have an appointment during this time, Please choose another time!",
             "choose": "Choose",
-            "book-free": "and book (free)"
+            "book-free": "and book (free)",
+            "hidden": "Hide",
+            "show": "See more",
+            "no-doctor": "Currently, there are no doctors available in this province. Please select another province!"
         },
         "extra-infor-doctor": {
             "text-address": "Address of examination",
@@ -99,6 +102,14 @@
             "priceBooking": "Free booking",
             "price": "Examination price: ",
             "see-more": "See more"
+        },
+        "all-specialty": {
+            "all-specialty": "All specialties",
+            "list-specialty": "List of specialties",
+            "all-doctor": "All doctors",
+            "list-doctor": "List of doctors",
+            "all-clinic": "All clinics",
+            "list-clinic": "List of clinics"
         }
     },
     "about": {

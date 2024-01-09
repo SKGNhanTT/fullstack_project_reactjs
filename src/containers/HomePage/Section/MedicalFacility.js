@@ -28,6 +28,11 @@ class MedicalFacility extends Component {
             this.props.history.push(`/detail-clinic/${clinic.id}`);
         }
     };
+    handleDetailAllClinic = () => {
+        if (this.props.history) {
+            this.props.history.push(`/all-facility`);
+        }
+    };
     render() {
         let { dataClinic } = this.state;
         let { language } = this.props;
@@ -39,7 +44,10 @@ class MedicalFacility extends Component {
                             <span className="title-section">
                                 <FormattedMessage id="homepage.medical-facilities" />
                             </span>
-                            <button className="btn-section">
+                            <button
+                                className="btn-section"
+                                onClick={() => this.handleDetailAllClinic()}
+                            >
                                 <FormattedMessage id="homepage.more-info" />
                             </button>
                         </div>

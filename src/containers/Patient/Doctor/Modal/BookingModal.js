@@ -191,10 +191,10 @@ class BookingModal extends Component {
                 className="modal-user-container"
             >
                 <Modal.Header>
-                    <div>
-                        <Modal.Title>
+                    <div className="title-header">
+                        <h5>
                             <FormattedMessage id="patient.booking-modal.title" />
-                        </Modal.Title>
+                        </h5>
                     </div>
                 </Modal.Header>
                 <Modal.Body>

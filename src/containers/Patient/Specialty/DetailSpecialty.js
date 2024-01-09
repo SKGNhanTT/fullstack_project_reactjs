@@ -174,7 +174,11 @@ class DetailSpecialty extends Component {
                                                 this.handleShowDetail()
                                             }
                                         >
-                                            {isShowDetail ? 'Ẩn' : 'Xem thêm'}
+                                            {isShowDetail ? (
+                                                <FormattedMessage id="patient.detail-doctor.hidden" />
+                                            ) : (
+                                                <FormattedMessage id="patient.detail-doctor.show" />
+                                            )}
                                         </span>
                                     )}
                             </div>
@@ -247,8 +251,7 @@ class DetailSpecialty extends Component {
                             <div>
                                 <div className="each-doctor">
                                     <p className="no-doctor">
-                                        Hiện không có bác sĩ nào ở tỉnh này. Vui
-                                        lòng chọn tỉnh khác!
+                                        <FormattedMessage id="patient.detail-doctor.no-doctor" />
                                     </p>
                                 </div>
                             </div>

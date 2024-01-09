@@ -27,9 +27,24 @@ class HomeHeader extends Component {
         }
     };
 
-    handleDetailSpecialty = () => {
+    handleLogin = () => {
         if (this.props.history) {
             this.props.history.push(`/login`);
+        }
+    };
+    handleDetailSpecialty = () => {
+        if (this.props.history) {
+            this.props.history.push(`/all-specialty`);
+        }
+    };
+    handleDetailDoctor = () => {
+        if (this.props.history) {
+            this.props.history.push(`/all-doctor`);
+        }
+    };
+    handleDetailClinic = () => {
+        if (this.props.history) {
+            this.props.history.push(`/all-facility`);
         }
     };
 
@@ -79,7 +94,9 @@ class HomeHeader extends Component {
                         </div>
                         <div className="center-content">
                             <div className="child-content">
-                                <div>
+                                <div
+                                    onClick={() => this.handleDetailSpecialty()}
+                                >
                                     <b>
                                         <FormattedMessage id="homeheader.specialty" />
                                     </b>
@@ -89,7 +106,7 @@ class HomeHeader extends Component {
                                 </div>
                             </div>
                             <div className="child-content">
-                                <div>
+                                <div onClick={() => this.handleDetailClinic()}>
                                     <b>
                                         <FormattedMessage id="homeheader.heath-facility" />
                                     </b>
@@ -99,7 +116,7 @@ class HomeHeader extends Component {
                                 </div>
                             </div>
                             <div className="child-content">
-                                <div>
+                                <div onClick={() => this.handleDetailDoctor()}>
                                     <b>
                                         <FormattedMessage id="homeheader.doctor" />
                                     </b>
@@ -112,7 +129,7 @@ class HomeHeader extends Component {
                         <div className="right-content">
                             <div
                                 className="login"
-                                onClick={() => this.handleDetailSpecialty()}
+                                onClick={() => this.handleLogin()}
                             >
                                 <i className="fa-solid fa-right-to-bracket"></i>
                                 <FormattedMessage id="homeheader.login" />
@@ -257,7 +274,10 @@ class HomeHeader extends Component {
                                 <FormattedMessage id="banner.recommended" />
                             </span>
                             <div className="option">
-                                <div className="option-child">
+                                <div
+                                    className="option-child"
+                                    onClick={() => this.handleDetailClinic()}
+                                >
                                     <div className="icon-child">
                                         <img
                                             className="img"
@@ -268,7 +288,10 @@ class HomeHeader extends Component {
                                         <FormattedMessage id="banner.text-child1" />
                                     </div>
                                 </div>
-                                <div className="option-child">
+                                <div
+                                    className="option-child"
+                                    onClick={() => this.handleDetailSpecialty()}
+                                >
                                     <div className="icon-child">
                                         <img
                                             className="img"
@@ -279,7 +302,10 @@ class HomeHeader extends Component {
                                         <FormattedMessage id="banner.text-child2" />
                                     </div>
                                 </div>
-                                <div className="option-child">
+                                <div
+                                    className="option-child"
+                                    onClick={() => this.handleDetailDoctor()}
+                                >
                                     <div className="icon-child">
                                         <img
                                             className="img"

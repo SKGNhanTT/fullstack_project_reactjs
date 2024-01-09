@@ -29,6 +29,11 @@ class Specialty extends React.Component {
             this.props.history.push(`/detail-specialty/${specialty.id}`);
         }
     };
+    handleDetailAllSpecialty = () => {
+        if (this.props.history) {
+            this.props.history.push(`/all-specialty`);
+        }
+    };
 
     render() {
         let { dataSpecialty } = this.state;
@@ -41,7 +46,10 @@ class Specialty extends React.Component {
                         <span className="title-section">
                             <FormattedMessage id="homepage.specialty" />
                         </span>
-                        <button className="btn-section">
+                        <button
+                            className="btn-section"
+                            onClick={() => this.handleDetailAllSpecialty()}
+                        >
                             <FormattedMessage id="homepage.more-info" />
                         </button>
                     </div>

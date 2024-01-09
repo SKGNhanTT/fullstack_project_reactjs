@@ -10,6 +10,7 @@ import moment from 'moment';
 import { toast } from 'react-toastify';
 import _ from 'lodash';
 import { saveBulkDoctor } from '../../../services/userService';
+import LoadingOverlay from 'react-loading-overlay';
 
 class ManageSchedule extends Component {
     constructor(props) {
@@ -19,6 +20,7 @@ class ManageSchedule extends Component {
             selectedDoctor: {},
             currentDate: '',
             rangeTime: [],
+            isLoadingOverlay: true,
         };
     }
 
@@ -42,6 +44,7 @@ class ManageSchedule extends Component {
             }
             this.setState({
                 rangeTime: data,
+                isLoadingOverlay: false,
             });
         }
 
@@ -148,65 +151,79 @@ class ManageSchedule extends Component {
         today.setDate(today.getDate() - 1);
         return (
             <React.Fragment>
-                <div className="manage-schedule-container">
-                    <div className="m-s-title">
-                        <FormattedMessage id="manage-schedule.title" />
-                    </div>
-                    <div className="container">
-                        <div className="row form-group">
-                            <div className="col-6">
-                                <label>
-                                    <FormattedMessage id="manage-schedule.choose-doctor" />
-                                </label>
-                                <Select
-                                    value={this.state.selectedDoctor}
-                                    onChange={this.handleChangeSelectDoctor}
-                                    options={this.state.listDoctor}
-                                />
-                            </div>
-                            <div className="col-6">
-                                <label>
-                                    <FormattedMessage id="manage-schedule.choose-date" />
-                                </label>
-                                <DatePicker
-                                    onChange={this.handleChangeDatePicker}
-                                    className="form-control"
-                                    value={this.state.currentDate}
-                                    minDate={today}
-                                />
-                            </div>
-                            <div className="col-12 pick-hour-container">
-                                {rangeTime &&
-                                    rangeTime.length > 0 &&
-                                    rangeTime.map((item) => (
-                                        <button
-                                            key={item.id}
-                                            className={
-                                                item.isSlected
-                                                    ? 'btn btn-schedule active'
-                                                    : 'btn btn-schedule'
+                <LoadingOverlay
+                    active={this.state.isLoadingOverlay}
+                    spinner
+                    text="Loading..."
+                >
+                    <div className="manage-schedule-container">
+                        <div className="m-s-title">
+                            <FormattedMessage id="manage-schedule.title" />
+                        </div>
+                        <div className="container">
+                            <div className="row form-group">
+                                <div className="col-6">
+                                    <label>
+                                        <FormattedMessage id="manage-schedule.choose-doctor" />
+                                    </label>
+                                    <Select
+                                        value={this.state.selectedDoctor}
+                                        onChange={this.handleChangeSelectDoctor}
+                                        options={this.state.listDoctor}
+                                    />
+                                </div>
+                                <div className="col-6">
+                                    <label>
+                                        <FormattedMessage id="manage-schedule.choose-date" />
+                                    </label>
+                                    <div>
+                                        <DatePicker
+                                            onChange={
+                                                this.handleChangeDatePicker
                                             }
-                                            onClick={() =>
-                                                this.handleClickBtnTime(item)
-                                            }
-                                        >
-                                            {language === LANGUAGES.VI
-                                                ? item.valueVi
-                                                : item.valueEn}
-                                        </button>
-                                    ))}
-                            </div>
-                            <div className="col-12">
-                                <button
-                                    className="btn btn-primary btn-save-schedule"
-                                    onClick={() => this.handleSaveSchedule()}
-                                >
-                                    <FormattedMessage id="manage-schedule.save" />
-                                </button>
+                                            className="form-control"
+                                            value={this.state.currentDate}
+                                            minDate={today}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="col-12 pick-hour-container">
+                                    {rangeTime &&
+                                        rangeTime.length > 0 &&
+                                        rangeTime.map((item) => (
+                                            <button
+                                                key={item.id}
+                                                className={
+                                                    item.isSlected
+                                                        ? 'btn btn-schedule active'
+                                                        : 'btn btn-schedule'
+                                                }
+                                                onClick={() =>
+                                                    this.handleClickBtnTime(
+                                                        item
+                                                    )
+                                                }
+                                            >
+                                                {language === LANGUAGES.VI
+                                                    ? item.valueVi
+                                                    : item.valueEn}
+                                            </button>
+                                        ))}
+                                </div>
+                                <div className="col-12">
+                                    <button
+                                        className="btn btn-primary btn-save-schedule"
+                                        onClick={() =>
+                                            this.handleSaveSchedule()
+                                        }
+                                    >
+                                        <FormattedMessage id="manage-schedule.save" />
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </LoadingOverlay>
             </React.Fragment>
         );
     }

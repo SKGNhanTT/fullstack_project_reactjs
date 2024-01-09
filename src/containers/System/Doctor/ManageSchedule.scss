@@ -6,7 +6,9 @@
         font-weight: 600;
         font-size: 17px;
     }
-
+    .form-control {
+        min-height: 38px !important;
+    }
     .pick-hour-container {
         margin: 20px 0;
         display: flex;

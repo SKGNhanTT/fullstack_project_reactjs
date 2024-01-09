@@ -212,7 +212,6 @@ class DetailDoctor extends Component {
                                     ></div>
                                 </div>
                             )}
-                        <div className="comment-doctor"></div>
                         {!_.isEmpty(detailDoctor) && <HomeFooter />}
                     </div>
                 </Fragment>
