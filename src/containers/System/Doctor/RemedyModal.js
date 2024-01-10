@@ -67,7 +67,9 @@ class RemedyModal extends Component {
             >
                 <Modal.Header>
                     <div>
-                        <h5>Gửi hóa đơn khám bệnh</h5>
+                        <h5>
+                            <FormattedMessage id="patient.booking-modal.title-modal" />
+                        </h5>
                     </div>
                 </Modal.Header>
                 <Modal.Body>

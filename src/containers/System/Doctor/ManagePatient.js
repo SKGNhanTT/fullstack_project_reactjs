@@ -112,10 +112,14 @@ class ManagePatient extends Component {
                     text="Loading..."
                 >
                     <div className="manage-patient-container">
-                        <div className="m-p-titler">Quản lí bệnh nhân</div>
+                        <div className="m-p-titler">
+                            <FormattedMessage id="manage-patient.title" />
+                        </div>
                         <div className="manage-patient-body row">
                             <div className="col-4 form-group">
-                                <label>Chọn ngày khám</label>
+                                <label>
+                                    <FormattedMessage id="manage-patient.choose-day" />
+                                </label>
                                 <DatePicker
                                     onChange={this.handleChangeDatePicker}
                                     className="form-control"
@@ -126,12 +130,24 @@ class ManagePatient extends Component {
                                 <table>
                                     <tbody>
                                         <tr>
-                                            <th className="col-1">No</th>
-                                            <th className="col-2">Time</th>
-                                            <th className="col-2">Name</th>
-                                            <th className="col-2">Address</th>
-                                            <th className="col-2">Gender</th>
-                                            <th className="col-3">Action</th>
+                                            <th className="col-1">
+                                                <FormattedMessage id="manage-patient.no" />
+                                            </th>
+                                            <th className="col-2">
+                                                <FormattedMessage id="manage-patient.time" />
+                                            </th>
+                                            <th className="col-2">
+                                                <FormattedMessage id="manage-patient.name" />
+                                            </th>
+                                            <th className="col-2">
+                                                <FormattedMessage id="manage-patient.address" />
+                                            </th>
+                                            <th className="col-2">
+                                                <FormattedMessage id="manage-patient.gender" />
+                                            </th>
+                                            <th className="col-3">
+                                                <FormattedMessage id="manage-patient.action" />
+                                            </th>
                                         </tr>
                                         {dataPatient &&
                                         dataPatient.length > 0 ? (
@@ -193,7 +209,7 @@ class ManagePatient extends Component {
                                                         textAlign: 'center',
                                                     }}
                                                 >
-                                                    No data
+                                                    <FormattedMessage id="manage-patient.nodata" />
                                                 </td>
                                             </tr>
                                         )}

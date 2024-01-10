@@ -7,6 +7,7 @@ import 'react-markdown-editor-lite/lib/index.css';
 import { LANGUAGES, CommonUtils } from '../../../utils';
 import { createNewSpecialty } from '../../../services/userService';
 import { toast } from 'react-toastify';
+import { FormattedMessage } from 'react-intl';
 
 const mdParser = new MarkdownIt(/* Markdown-it options */);
 class ManageSpecialty extends Component {
@@ -83,11 +84,15 @@ class ManageSpecialty extends Component {
         return (
             <Fragment>
                 <div className="manage-specialty-container">
-                    <div className="ms-title">Quản lí chuyên khoa</div>
+                    <div className="ms-title">
+                        <FormattedMessage id="manage-specialties.title" />
+                    </div>
 
                     <div className="add-new-specialty row">
                         <div className="col-6 form-group">
-                            <label>Tên chuyên khoa tiếng Anh</label>
+                            <label>
+                                <FormattedMessage id="manage-specialties.nameEn" />
+                            </label>
                             <input
                                 type="text"
                                 className="form-control"
@@ -98,7 +103,9 @@ class ManageSpecialty extends Component {
                             />
                         </div>
                         <div className="col-6 form-group">
-                            <label>Ảnh chuyên khoa</label>
+                            <label>
+                                <FormattedMessage id="manage-specialties.image" />
+                            </label>
                             <input
                                 className="form-control-file"
                                 type="file"
@@ -106,7 +113,9 @@ class ManageSpecialty extends Component {
                             />
                         </div>
                         <div className="col-6 form-group">
-                            <label>Tên chuyên khoa tiếng Việt</label>
+                            <label>
+                                <FormattedMessage id="manage-specialties.nameVi" />
+                            </label>
                             <input
                                 type="text"
                                 className="form-control"
@@ -116,8 +125,10 @@ class ManageSpecialty extends Component {
                                 }
                             />
                         </div>
-                        <div className="col-12">
-                            <label>Mô tả chuyên khoa bằng tiếng Anh</label>
+                        <div className="col-12 editer">
+                            <label>
+                                <FormattedMessage id="manage-specialties.desEn" />
+                            </label>
                             <MdEditor
                                 style={{ height: '400px' }}
                                 renderHTML={(text) => mdParser.render(text)}
@@ -125,8 +136,10 @@ class ManageSpecialty extends Component {
                                 value={this.state.descriptionMarkdownEn}
                             />
                         </div>
-                        <div className="col-12">
-                            <label>Mô tả chuyên khoa bằng tiếng Việt</label>
+                        <div className="col-12 editer">
+                            <label>
+                                <FormattedMessage id="manage-specialties.desVi" />
+                            </label>
                             <MdEditor
                                 style={{ height: '400px' }}
                                 renderHTML={(text) => mdParser.render(text)}
@@ -139,7 +152,7 @@ class ManageSpecialty extends Component {
                                 className="btn-save-specialty"
                                 onClick={() => this.handleSaveNewSpecialTy()}
                             >
-                                Save
+                                <FormattedMessage id="manage-specialties.save" />
                             </button>
                         </div>
                     </div>

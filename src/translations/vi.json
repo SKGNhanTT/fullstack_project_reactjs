@@ -72,6 +72,39 @@
         "choose-date": "Chọn ngày",
         "save": "Lưu thông tin"
     },
+    "manage-patient": {
+        "title": "Quản lí thông tị bệnh nhân",
+        "choose-day": "Chọn ngày khám",
+        "no": "STT",
+        "time": "Thời gian",
+        "name": "Tên bệnh nhân",
+        "address": "Địa chỉ",
+        "gender": "Giới tính",
+        "action": "Hành động",
+        "nodata": "Không có dữ liệu"
+    },
+    "manage-clinic": {
+        "title": "Quản lí thông tin phòng khám",
+        "nameEn": "Tên phòng khám bằng Tiếng Anh",
+        "nameVi": "Tên phòng khám bằng Tiếng Việt",
+        "image": "Hình ảnh",
+        "addressEn": "Địa chỉ phòng khám bằng tiếng Anh",
+        "addressVi": "Địa chỉ phòng khám bằng tiếng Việt",
+        "desEn": "Mô tả phòng khám bằng tiếng Anh",
+        "desVi": "Mô tả phòng khám bằng tiếng Việt",
+        "save": "Lưu"
+    },
+    "manage-specialties": {
+        "title": "Quản lí chuyên khoa",
+        "nameEn": "Tên phòng chuyên khoa bằng Tiếng Anh",
+        "nameVi": "Tên phòng chuyên khoa bằng Tiếng Việt",
+        "image": "Hình ảnh",
+        "addressEn": "Địa chỉ chuyên khoa bằng tiếng Anh",
+        "addressVi": "Địa chỉ chuyên khoa bằng tiếng Việt",
+        "desEn": "Mô tả chuyên khoa bằng tiếng Anh",
+        "desVi": "Mô tả chuyên khoa bằng tiếng Việt",
+        "save": "Lưu"
+    },
     "patient": {
         "detail-doctor": {
             "schedule": "Lịch Khám",
@@ -102,7 +135,8 @@
             "cancel-btn": "Hủy",
             "priceBooking": "Miễn phí đặt lịch",
             "price": "Giá khám: ",
-            "see-more": "Xem thêm"
+            "see-more": "Xem thêm",
+            "title-modal": "Gửi đơn thuốc"
         },
         "all-specialty": {
             "all-specialty": "Tất cả chuyên khoa",

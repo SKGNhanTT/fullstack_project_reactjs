@@ -91,6 +91,7 @@ class BookingModal extends Component {
 
     handleSaveChange = async () => {
         // let date = new Date(this.state.birth).getTime();
+        this.props.showLoading();
         let timeString = this.buildTimeBooking(this.props.dataTime);
         let doctorName = this.buildDoctorName(this.props.dataTime);
         let res = await postPatientBookingAppointment({
@@ -110,6 +111,7 @@ class BookingModal extends Component {
 
         if (res && res.errCode === 0) {
             toast.success('Create appointment succeed!');
+            this.props.hideLoading();
             this.props.isClose();
             this.setState({
                 fullName: '',
@@ -121,10 +123,12 @@ class BookingModal extends Component {
                 birth: '',
             });
         } else if (res && res.errCode === 3) {
+            this.props.hideLoading();
             toast.error(
                 'At this time, doctor is not available. Please select another appointment slot.'
             );
         } else {
+            this.props.hideLoading();
             toast.error('Create appointment failed!');
         }
     };
@@ -308,14 +312,14 @@ class BookingModal extends Component {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button
-                        className="px-3 py-1"
+                        className="px-3 py-2"
                         variant="secondary"
                         onClick={this.props.isClose}
                     >
                         <FormattedMessage id="patient.booking-modal.cancel-btn" />
                     </Button>
                     <Button
-                        className="px-3 py-1"
+                        className="px-3 py-2"
                         variant="primary"
                         onClick={() => this.handleSaveChange()}
                     >

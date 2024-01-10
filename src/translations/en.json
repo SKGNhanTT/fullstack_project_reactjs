@@ -71,6 +71,39 @@
         "choose-date": "Choose Date",
         "save": "Save information"
     },
+    "manage-patient": {
+        "title": "Manage Patient's Information",
+        "choose-day": "Choose day",
+        "no": "No",
+        "time": "Time",
+        "name": "Name",
+        "address": "Address",
+        "gender": "Gender",
+        "action": "Action",
+        "nodata": "No data"
+    },
+    "manage-clinic": {
+        "title": "Manage clinic information",
+        "nameEn": "Clinic name in English",
+        "nameVi": "Clinic name in Vietnamese",
+        "image": "Image",
+        "addressEn": "Clinic address in English",
+        "addressVi": "Clinic address in Vietnamese",
+        "desEn": "Clinic description in English",
+        "desVi": "Clinic description in Vietnamese",
+        "save": "Save"
+    },
+    "manage-specialties": {
+        "title": "Manage specialty information",
+        "nameEn": "Specialty name in English",
+        "nameVi": "Specialty name in Vietnamese",
+        "image": "Image",
+        "addressEn": "Specialty address in English",
+        "addressVi": "Specialty address in Vietnamese",
+        "desEn": "Specialty description in English",
+        "desVi": "Specialty description in Vietnamese",
+        "save": "Save"
+    },
     "patient": {
         "detail-doctor": {
             "schedule": "Schedule",
@@ -101,7 +134,8 @@
             "cancel-btn": "Close",
             "priceBooking": "Free booking",
             "price": "Examination price: ",
-            "see-more": "See more"
+            "see-more": "See more",
+            "title-modal": "Send prescription"
         },
         "all-specialty": {
             "all-specialty": "All specialties",

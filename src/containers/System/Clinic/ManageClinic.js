@@ -7,6 +7,7 @@ import 'react-markdown-editor-lite/lib/index.css';
 import { LANGUAGES, CommonUtils } from '../../../utils';
 import { createNewClinic } from '../../../services/userService';
 import { toast } from 'react-toastify';
+import { FormattedMessage } from 'react-intl';
 
 const mdParser = new MarkdownIt(/* Markdown-it options */);
 class ManageClinic extends Component {
@@ -86,11 +87,15 @@ class ManageClinic extends Component {
         return (
             <Fragment>
                 <div className="manage-specialty-container">
-                    <div className="ms-title">Quản lí phòng khám</div>
+                    <div className="ms-title">
+                        <FormattedMessage id="manage-clinic.title" />
+                    </div>
 
                     <div className="add-new-specialty row">
                         <div className="col-6 form-group">
-                            <label>Tên phòng khám bằng tiếng Anh</label>
+                            <label>
+                                <FormattedMessage id="manage-clinic.nameEn" />
+                            </label>
                             <input
                                 type="text"
                                 className="form-control"
@@ -101,7 +106,9 @@ class ManageClinic extends Component {
                             />
                         </div>
                         <div className="col-6 form-group">
-                            <label>Ảnh phòng khám</label>
+                            <label>
+                                <FormattedMessage id="manage-clinic.image" />
+                            </label>
                             <input
                                 className="form-control-file"
                                 type="file"
@@ -109,7 +116,9 @@ class ManageClinic extends Component {
                             />
                         </div>
                         <div className="col-6 form-group">
-                            <label>Tên phòng khám bằng tiếng Việt</label>
+                            <label>
+                                <FormattedMessage id="manage-clinic.nameVi" />
+                            </label>
                             <input
                                 type="text"
                                 className="form-control"
@@ -120,7 +129,9 @@ class ManageClinic extends Component {
                             />
                         </div>
                         <div className="col-6 form-group">
-                            <label>Địa chỉ phòng khám bằng tiếng Anh</label>
+                            <label>
+                                <FormattedMessage id="manage-clinic.addressEn" />
+                            </label>
                             <input
                                 type="text"
                                 className="form-control"
@@ -131,7 +142,9 @@ class ManageClinic extends Component {
                             />
                         </div>
                         <div className="col-6 form-group">
-                            <label>Địa chỉ phòng khám bằng tiếng Việt</label>
+                            <label>
+                                <FormattedMessage id="manage-clinic.addressVi" />
+                            </label>
                             <input
                                 type="text"
                                 className="form-control"
@@ -141,8 +154,10 @@ class ManageClinic extends Component {
                                 }
                             />
                         </div>
-                        <div className="col-12">
-                            <label>Mô tả phòng khám bằng tiếng Anh</label>
+                        <div className="col-12 editer">
+                            <label>
+                                <FormattedMessage id="manage-clinic.desEn" />
+                            </label>
                             <MdEditor
                                 style={{ height: '400px' }}
                                 renderHTML={(text) => mdParser.render(text)}
@@ -150,8 +165,10 @@ class ManageClinic extends Component {
                                 value={this.state.descriptionMarkdownEn}
                             />
                         </div>
-                        <div className="col-12">
-                            <label>Mô tả phòng khám bằng tiếng Việt</label>
+                        <div className="col-12 editer">
+                            <label>
+                                <FormattedMessage id="manage-clinic.desVi" />
+                            </label>
                             <MdEditor
                                 style={{ height: '400px' }}
                                 renderHTML={(text) => mdParser.render(text)}
@@ -164,7 +181,7 @@ class ManageClinic extends Component {
                                 className="btn-save-specialty"
                                 onClick={() => this.handleSaveNewClinic()}
                             >
-                                Save
+                                <FormattedMessage id="manage-clinic.save" />
                             </button>
                         </div>
                     </div>
